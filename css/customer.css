@@ -1,0 +1,21 @@
+.login_container {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    padding-top: 10%;
+}
+
+.login_text{
+    text-align: center;
+    font-size: 36px;
+}
+a.alert-link:link{
+    font-weight: normal;
+    color: #17a2b8;
+}
+a.alert-link:hover{
+    color:#FFFFFF;
+    font-weight: normal;
+}
