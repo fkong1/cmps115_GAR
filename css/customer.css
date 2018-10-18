@@ -19,3 +19,16 @@ a.alert-link:hover{
     color:#FFFFFF;
     font-weight: normal;
 }
+
+.register_container{
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    padding-top: 10%;
+}
+.register_text{
+    text-align: center;
+    font-size: 30px;
+}

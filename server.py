@@ -4,6 +4,10 @@ from bottle import get, route, run, template, view, static_file
 def index():
     return template('new_temp')
 
+@get('/register')
+def register():
+    return template("register_temp")
+
 
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')

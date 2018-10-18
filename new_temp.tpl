@@ -7,7 +7,7 @@
 <body class="p-3 mb-2 bg-dark text-white">
    <div>
       <div class="login_container">
-         <div class ="login_logo>
+         <div class ="login_logo" style="padding-left: 130px">
             <img src="/images/icons8-taxi-50.png">
          </div>
          <div class ="login_text">Login</div>
@@ -29,7 +29,7 @@
          </div>
          <div class = "btn_login" style="padding-left:14px;">
             <button type="button" class="btn btn-info" style="width:300px">Login</button>
-         </div>
+      </div>
          <div class="label_container" style="padding-left:14px;">
             <a href="#" class="alert-link">Sign Up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" class="alert-link">Forgot Password</a>
