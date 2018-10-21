@@ -33,5 +33,20 @@ a.alert-link:hover{
     font-size: 30px;
 }
 .submit_button{
-    float: right;
+    float: left;
+    border: 1px solid #1e7e34;
+}
+.cancel_button{
+    border: 1px solid #bd2130;
+}
+.button_register{
+    border: 1px solid #6f42c1;
+    height:auto;
+    padding-left:14px;
+}
+.register_form_container{
+    border: 1px solid #adb5bd;
+}
+.register_text{
+    border: 1px solid #fd7e14;
 }

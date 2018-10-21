@@ -6,7 +6,6 @@
 </head>
 
 <body class="p-3 mb-2 bg-dark text-white">
-    <div>
         <div class="register_container">
             <div class="register_text">Register</div>
             <div class="register_form_container" style="padding-top: 15px">
@@ -28,10 +27,9 @@
                     </div>
                 </form>
             </div>
-            <div class="button_register" style="padding-left:14px;">
+            <div class="button_register">
                 <div class="submit_button" ><button type="button" class="btn btn-info" style="width: 148px;">Submit</button></div>
                 <div class="cancel_button"><button type="button" class="btn btn-info" style="width: 148px;">Cancle</button></div>
             </div>
         </div>
-    </div>
 </body>
