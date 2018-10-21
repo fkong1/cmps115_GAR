@@ -8,6 +8,14 @@ def index():
 def register():
     return template("register_temp")
 
+@get('/register-succeed')
+def register_succeed():
+    return template("register_succeed")
+
+@get('/find-password-succeed')
+def password_succeed():
+    return template("password_succeed")
+
 
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')
