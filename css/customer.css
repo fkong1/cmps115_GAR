@@ -32,3 +32,6 @@ a.alert-link:hover{
     text-align: center;
     font-size: 30px;
 }
+.submit_button{
+    float: right;
+}

@@ -29,8 +29,8 @@
                 </form>
             </div>
             <div class="button_register" style="padding-left:14px;">
-                <button type="button" class="btn btn-info" style="width: 148px;">Submit</button>
-                <button type="button" class="btn btn-info" style="width: 148px;">Cancle</button>
+                <div class="submit_button" ><button type="button" class="btn btn-info" style="width: 148px;">Submit</button></div>
+                <div class="cancel_button"><button type="button" class="btn btn-info" style="width: 148px;">Cancle</button></div>
             </div>
         </div>
     </div>
