@@ -25,28 +25,26 @@ a.alert-link:hover{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width: 300px;
     padding-top: 10%;
 }
 .register_text{
+    width: 300px;
     text-align: center;
     font-size: 30px;
+    margin-bottom: 30px;
 }
 .submit_button{
     float: left;
-    border: 1px solid #1e7e34;
+    width: 148px;
 }
 .cancel_button{
-    border: 1px solid #bd2130;
+    float: right;
+    width: 148px;
 }
 .button_register{
-    border: 1px solid #6f42c1;
     height:auto;
-    padding-left:14px;
 }
 .register_form_container{
-    border: 1px solid #adb5bd;
-}
-.register_text{
-    border: 1px solid #fd7e14;
+    width: 300px;
 }
