@@ -5,6 +5,7 @@
    <script type="text/javascript" src="/js/bootstrap.js"></script>
 </head>
 
+<!---->
 
 <body class="p-3 mb-2 bg-dark text-white">
     <div class="register_succeed_container">
