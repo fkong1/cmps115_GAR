@@ -28,10 +28,12 @@
             </form>
          </div>
          <div class = "btn_login" style="padding-left:14px;">
-            <button type="button" class="btn btn-info" style="width:300px">Login</button>
+            <form action="/main" method="get">
+               <button type="submit" class="btn btn-info" style="width:300px">Login</button>
+            </form>
       </div>
          <div class="label_container" style="padding-left:14px;">
-            <a href="#" class="alert-link">Sign Up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="register" class="alert-link">Sign Up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" class="alert-link">Forgot Password</a>
          </div>
       </div>

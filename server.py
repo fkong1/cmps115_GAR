@@ -2,7 +2,7 @@ from bottle import get, route, run, template, view, static_file
 
 @get('/')
 def index():
-    return template('new_temp')
+    return template('login_temp')
 
 @get('/register')
 def register():
@@ -14,7 +14,11 @@ def register_succeed():
 
 @get('/find-password-succeed')
 def password_succeed():
-    return template("password_succeed")
+    return template("password-succeed")
+
+@get('/main')
+def main():
+    return template("main_temp")
 
 
 # Let's add some code to serve jpg images from our static images directory.

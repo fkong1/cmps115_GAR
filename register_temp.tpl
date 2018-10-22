@@ -28,8 +28,17 @@
                 </form>
             </div>
             <div class="button_register">
-                <div class="submit_button" ><button type="button" class="btn btn-info" style="width: 148px;">Submit</button></div>
-                <div class="cancel_button"><button type="button" class="btn btn-info" style="width: 148px;">Cancel</button></div>
+                <div class="submit_button" >
+                    <form action="/register-succeed" method="get">
+                        <button type="submit" class="btn btn-info" style="width: 148px;">Submit</button>
+                    </form>
+                </div>
+
+                <div class="cancel_button">
+                    <form action="/" method="get">
+                        <button type="submit" class="btn btn-info" style="width: 148px;">Cancel</button>
+                    </form>
+                </div>
             </div>
         </div>
 </body>
