@@ -3,10 +3,15 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width: 300px;
     padding-top: 10%;
 }
-
+.login_logo{
+    text-align: center;
+}
+.main_col-md-4{
+    padding-left: 0px;
+}
 .login_text{
     text-align: center;
     font-size: 36px;
@@ -19,7 +24,13 @@ a.alert-link:hover{
     color:#FFFFFF;
     font-weight: normal;
 }
-
+a.alert-link:visited{
+    color: #17a2b8;
+    font-weight: normal;
+}
+.label_container{
+    padding-left:14px;
+}
 .register_container{
     float: none;
     display: block;
@@ -27,6 +38,12 @@ a.alert-link:hover{
     margin-right: auto;
     width: 300px;
     padding-top: 10%;
+}
+.main_link_1{
+    float: left;
+}
+.main_link_2{
+    float: right;
 }
 .register_text{
     width: 300px;
@@ -47,6 +64,29 @@ a.alert-link:hover{
 }
 .register_form_container{
     width: 300px;
+}
+.psw_container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    padding-top: 10%;
+}
+.selection_container{
+    margin-bottom: 12px;
+    padding-left: 20px;
+}
+.radio_label{
+    float: left;
+    width: 90px;
+    height:38px;
+}
+.psw_btn_container{
+}
+.psw_btn_1{
+    float: left;
+}
+.psw_btn_2{
+    float: right;
 }
 .register_succeed_container{
     float: none;

@@ -4,65 +4,34 @@
    <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="/js/bootstrap.js"></script>
 </head>
-
 <body class="p-3 mb-2 bg-dark text-white">
-    <div>
-        <div class="register_container">
-            <div class="register_text"><p>Find your password</p></div>
-            <div class="register_form_container" style="padding-top: 15px">
-                <form>
-                    <div class="form-group" style="padding-left:14px;">
-
-<!---------------------------------------------------------------------------------------------------------第1行------>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">Forget ID</label>
-                        </div>
-                        <div class="form-group form-group-inline" style="padding-left:14px;">
-                            <input type="text" class="form-control" id="findPW 1st input" placeholder="findPW 1st input" style = "width:300px;">
-                        </div>
-<!---------------------------------------------------------------------------------------------------------第1行------>
-                    </div>
-
-                    <div class="form-group" style="padding-left:14px;">
-<!---------------------------------------------------------------------------------------------------------第2行------>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">Forget Password</label>
-                        </div>
-                        <div class="form-group form-group-inline" style="padding-left:14px;">
-                            <input type="text" class="form-control" id="findPW 2nd input" placeholder="findPW 2nd input" style = "width:300px;" aria-label="Text input with checkbox">
-                        </div>
-<!---------------------------------------------------------------------------------------------------------第2行------>
-                    </div>
-
-                    <div class="form-group" style="padding-left:14px;">
-<!---------------------------------------------------------------------------------------------------------第3行------>
-                        <pre>
-
-                        </pre>
-
-<!---------------------------------------------------------------------------------------------------------第3行------>
-                    </div>
-
-                    <div class="form-group" style="padding-left:14px;">
-<!---------------------------------------------------------------------------------------------------------第4行------>
-<!---------------------------------------------------------------------------------------------------------第4行------>
-                    </div>
-
-                    <div class="form-group" style="padding-left:14px;">
-<!---------------------------------------------------------------------------------------------------------第3行------>
-                        <div class="form-group" style="padding-left:14px;">
-                            <input type="text" class="form-control" id="findPW 3rd input" placeholder="findPW 3rd input" style = "width:300px;">
-                        </div>
-<!---------------------------------------------------------------------------------------------------------第3行------>
-                    </div>
-                </form>
+   <div class="psw_container">
+      <div class="register_container">
+         <div class="register_text">
+            <p>Find your password</p>
+         </div>
+         <div class="register_form_container">
+            <div class="selection_container">
+               <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+               <label class="form-check-label radio_label" for="exampleRadios1">Username: </label>
+               <input type="text" class="form-control" id="find_by_ID" placeholder="find by username" style = "width:190px;">
             </div>
-            <div class="button_register-inline" style="padding-left:14px;">
-                <button type="button-inline" class="btn btn-primary" style="width: 148px;">Send</button>
-                <button type="button-inline" class="btn btn-secondary" style="width: 148px;">Cancle</button>
+            <div class="selection_container">
+               <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+               <label class="form-check-label radio_label" for="exampleRadios2">Email: </label>
+               <input type="text" class="form-control" id="find_by_email" placeholder="find by email" style = "width:190px;">
             </div>
-        </div>
-    </div>
+            <div class="psw_btn_container">
+               <div class = "psw_btn_1">
+                  <button type="button-inline" class="btn btn-info" style="width: 144px;">Send</button>
+               </div>
+               <div class = "psw_btn_2">
+                  <form action="/" method="get">
+                  <button type="button-inline" class="btn btn-info" style="width: 144px;">Cancle</button>
+                     </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </body>

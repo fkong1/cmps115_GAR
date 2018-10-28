@@ -16,6 +16,10 @@ def register_succeed():
 def password_succeed():
     return template("password-succeed")
 
+@get('/findpw')
+def find_pw():
+    return template("findPW_temp")
+
 @get('/main')
 def main():
     return template("main_temp")
