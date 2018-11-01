@@ -27,8 +27,8 @@
                </div>
                <div class = "psw_btn_2">
                   <form action="/" method="get">
-                  <button type="button-inline" class="btn btn-info" style="width: 144px;">Cancle</button>
-                     </form>
+                     <button type="button-inline" class="btn btn-info" style="width: 144px;">Cancle</button>
+                  </form>
                </div>
             </div>
          </div>
