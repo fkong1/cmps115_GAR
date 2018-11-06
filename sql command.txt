@@ -9,3 +9,6 @@ CREATE TABLE `gar_database`.`user` (
   `studentid` VARCHAR(7) NOT NULL,
   `identity` VARCHAR(45) NULL DEFAULT 'passenger',
   PRIMARY KEY (`userid`));
+
+3. 插入一条数据
+INSERT INTO `gar_database`.`user` (`userid`, `username`, `cruzid`, `studentid`, `identity`) VALUES ('0001', 'bill', 'hbill', '1234567', 'passenger');
