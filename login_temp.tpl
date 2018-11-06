@@ -4,20 +4,6 @@
    <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="/js/bootstrap.js"></script>
 
-   <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAOOqsx8ZbKsFrm-8T4ZTkEYZbROKzyMJA",
-    authDomain: "cmps115-gar.firebaseapp.com",
-    databaseURL: "https://cmps115-gar.firebaseio.com",
-    projectId: "cmps115-gar",
-    storageBucket: "cmps115-gar.appspot.com",
-    messagingSenderId: "765891788857"
-  };
-  firebase.initializeApp(config);
-</script>
-
 </head>
 <body class="p-3 mb-2 bg-dark text-white">
    <div>
@@ -57,33 +43,4 @@
          </div>
       </div>
    </div>
-
-   <script>
-
-       document.getElementById("login").addEventListener("click", checkForm);
-
-      function checkForm() {
-          var login_form = document.querySelector('#login_form');
-           alert("login_form");
-
-               var username = login_form.username.value;
-               alert(username);
-               var password = login_form.password.value;
-               alert(password);
-
-
-               if(!username || !password){
-                   alert("aaaa");
-                   return console.log('username and password required');
-
-               }
-           firebase.auth().signInWithUsenameAndPassword(username, password).catch(function (error) {
-               var errorCode = error.code;
-               var errorMessage = error.message;
-               console.log('signIn error',error);
-
-               });
-      };
-
-   </script>
 </body>

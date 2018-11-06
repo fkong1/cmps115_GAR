@@ -1,3 +1,13 @@
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="password"
+)
+
+print("---database connect: ---" + str(mydb))
+
 from bottle import get, route, run, template, view, static_file
 
 @get('/')
