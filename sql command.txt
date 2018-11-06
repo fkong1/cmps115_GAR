@@ -1,0 +1,11 @@
+1.创建数据库 
+create database gar_database;
+
+2.创建数据表（table）
+CREATE TABLE `gar_database`.`user` (
+  `userid` INT NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
+  `cruzid` VARCHAR(255) NOT NULL,
+  `studentid` VARCHAR(7) NOT NULL,
+  `identity` VARCHAR(45) NULL DEFAULT 'passenger',
+  PRIMARY KEY (`userid`));
