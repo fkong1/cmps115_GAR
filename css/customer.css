@@ -130,3 +130,13 @@ a.alert-link:visited{
     text-align: center;
     font-size: 15px;
 }
+.password_successful_text{
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    width: 300px;
+    text-align: center;
+    font-size: 15px;
+}
