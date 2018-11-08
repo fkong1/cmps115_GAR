@@ -12,6 +12,6 @@
             <img src="/images/icons8-checkmark-64.png">
         </div>
         <div class="successful_title">Congratulations!</div>
-        <div class="successful_text">You've just join us!</div>
+        <div class="successful_text">Welcome back!</div>
     </div>
 </body>

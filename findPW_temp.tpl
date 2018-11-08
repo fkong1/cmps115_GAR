@@ -7,6 +7,9 @@
 <body class="p-3 mb-2 bg-dark text-white">
    <div class="psw_container">
       <div class="register_container">
+         <div class ="login_logo">
+            <img src="/images/icons8-search-64.png">
+         </div>
          <div class="register_text">
             <p>Find your password</p>
          </div>
