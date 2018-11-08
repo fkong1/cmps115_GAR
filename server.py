@@ -19,6 +19,10 @@ def register():
 def register_succeed():
     return template("register_succeed")
 
+@get('/login-succeed')
+def login_succeed():
+    return template("login_succeed")
+
 @get('/find-password-succeed')
 def password_succeed():
     return template("password-succeed")
@@ -33,9 +37,9 @@ def main():
 
 
 # Let's add some code to serve jpg images from our static images directory.
-# @route('/images/<filename:re:.*\.*>')
-# def serve_image(filename):
-#     return static_file(filename, root='images', mimetype='image/png jpg')
+@route('/images/<filename:re:.*\.*>')
+def serve_image(filename):
+    return static_file(filename, root='images', mimetype='image/png jpg')
 
 def login_connectDB(username, password):
     str_sql = "SELECT PASSWORD FROM user where username ='" + username  + "'"
@@ -47,10 +51,10 @@ def login_connectDB(username, password):
 )
     mycursor = mydb.cursor()
     print str_sql
-    mycursor.execute(str_sql)
+    rows_count = mycursor.execute(str_sql)
     myresult = mycursor.fetchall()
     print myresult
-    if myresult is not None:
+    if rows_count > 0:
         print "test"
         for x in myresult:
             psw = x[0]
@@ -75,7 +79,7 @@ def login():
     if login_connectDB(login_username,login_password)== False:
         return template("login_wrong")
     else:
-        return template("main_temp")
+        return template("login_succeed")
 
 
 # Code for serving css stylesheets from /css directory.
@@ -84,5 +88,5 @@ def serve_css(filename):
     return static_file(filename, root='css', mimetype='text/css')
 
 
-run(reloader=True, host='localhost', port=3003)
+run(reloader=True, host='localhost', port=3004)
 

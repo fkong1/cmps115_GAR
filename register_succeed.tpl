@@ -9,7 +9,7 @@
 <body class="p-3 mb-2 bg-dark text-white">
     <div class="register_succeed_container">
         <div class="successful_sign">
-            <img src="/images/successfulsign.png">
+            <img src="/images/icons8-checkmark-64.png">
         </div>
         <div class="successful_title">Congratulations!</div>
         <div class="successful_text">You've just join us!</div>

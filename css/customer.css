@@ -130,7 +130,7 @@ a.alert-link:visited{
     text-align: center;
     font-size: 15px;
 }
-.password_successful_text{
+.login_wrong_text{
     float: none;
     display: block;
     margin-left: auto;
