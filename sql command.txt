@@ -3,16 +3,17 @@ create database gar_database;
 
 2.创建数据表（table）
 CREATE TABLE `gar_database`.`user` (
-  `userid` INT NOT NULL,
+  `userid` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `cruzid` VARCHAR(255) NOT NULL,
   `studentid` VARCHAR(7) NOT NULL,
+  `emailaddress` VARCHAR(255) NOT NULL,
   `identity` VARCHAR(45) NULL DEFAULT 'passenger',
   PRIMARY KEY (`userid`));
 
 3. 插入一条数据
-INSERT INTO `gar_database`.`user` (`userid`, `username`,`password`, `cruzid`, `studentid`, `identity`) VALUES ('0001', 'bill', 'hbill','hbill', '1234567', 'passenger');
+INSERT INTO `gar_database`.`user` (`userid`, `username`,`password`, `cruzid`, `studentid`,`emailaddress`, `identity`) VALUES ('0001', 'bill', 'hbill','hbill', '1234567','hbill@ucsc.edu', 'passenger');
 
 4. 删除数据表
 DROP TABLE user ;
