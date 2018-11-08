@@ -37,19 +37,13 @@ def login_connectDB(username, password):
     print ("myresult: " + str(myresult))
     if myresult is not None:
         for x in myresult:
-            if x[0] == username:
-                mycursor.execute("SELECT passwprd FROM user")
-                myresult = mycursor.fetchone()
-                for y in myresult:
-                    if y[0] == password:
-                        print "password is correct"
-                        return True
-                print "password is wrong"
-                return False
-        print "username is wrong"
-        return False
-    else:
-        return False
+            usern = x
+        if usern == username:
+            print "password is correct"
+            return True
+        else:
+            print "username is wrong"
+            return False
     mydb.close()
 
 def register_connectDB(username, password,cruzid,studentid,emailaddress,identity):
