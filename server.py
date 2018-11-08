@@ -53,6 +53,7 @@ def login_connectDB(username, password):
     print ("sql: "+ str(str_sql))
     mycursor.execute(str_sql)
     myresult = mycursor.fetchone()
+    mydb.close()
     print ("myresult: " + str(myresult))
     if myresult is not None:
         for x in myresult:
@@ -65,7 +66,6 @@ def login_connectDB(username, password):
             return False
     else:
         return False
-    mydb.close()
 
 
 
