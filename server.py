@@ -16,7 +16,7 @@ def index():
 def register():
     return template("register_temp")
 
-def register_connectDB(username,password):
+def register_connectDB(username, password,cruzid,studentid,emailaddress,identity):
     mydb = mysql.connector.connect(
         host = "localhost",
         user="root",
@@ -30,11 +30,10 @@ def register_connectDB(username,password):
     for x in myresult:
         usern = x[0]
     if usern == username:
-        print "username already exist"
         return False
     else:
-        sql = "INSERT INTO user (username, password) VALUES (%s, %s)"
-        val = (username, password)
+        sql = "INSERT INTO user (username, password,cruzid,studentid,emailaddress,identity) VALUES (%s, %s, %s, %s, %s, %s)"
+        val = (username, password,cruzid,studentid,emailaddress,identity)
         mycursor.execute(sql, val)
         mydb.commit()
         return True
@@ -46,13 +45,16 @@ def register_connectDB(username,password):
 def register():
     register_username = request.forms.get('username')
     register_password = request.forms.get('password')
-    print register_username
-    if register_password == "" and register_username == "":
-        return template("login_temp")
-    if register_connectDB(register_username,register_password) == True:
+    register_cruzid = request.forms.get('cruzid')
+    register_studentid = request.forms.get('studentid')
+    register_emailaddress = request.forms.get('emailaddress')
+    register_identity = request.forms.get('identity')
+    if register_password == "" or register_username == "" or register_cruzid == "" or register_studentid == "" or register_emailaddress == "":
+        return template("register_wrong")
+    if register_connectDB(register_username,register_password,register_cruzid,register_studentid,register_emailaddress,register_identity) == True:
         return template("register_succeed")
     else:
-        return template("register_temp")
+        return template("register_used.tpl")
 
 @get('/register-succeed')
 def register_succeed():
@@ -112,6 +114,7 @@ def login_connectDB(username, password):
 def login():
     login_username = request.forms.get('username')
     login_password = request.forms.get('password')
+
     print("login_username: " + str(login_username))
     print("login_password: " + str(login_password))
     if login_connectDB(login_username,login_password)== False:
