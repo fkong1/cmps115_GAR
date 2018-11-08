@@ -50,14 +50,13 @@ def login_connectDB(username, password):
     database="gar_database"
 )
     mycursor = mydb.cursor()
-    print str_sql
-    rows_count = mycursor.execute(str_sql)
-    myresult = mycursor.fetchall()
-    print myresult
-    if rows_count > 0:
-        print "test"
+    print ("sql: "+ str(str_sql))
+    mycursor.execute(str_sql)
+    myresult = mycursor.fetchone()
+    print ("myresult: " + str(myresult))
+    if myresult is not None:
         for x in myresult:
-            psw = x[0]
+            psw = x
         if psw == password:
             print "password is correct"
             return True
@@ -88,5 +87,5 @@ def serve_css(filename):
     return static_file(filename, root='css', mimetype='text/css')
 
 
-run(reloader=True, host='localhost', port=3004)
+run(reloader=True, host='localhost', port=3005)
 
