@@ -3,7 +3,7 @@ create database gar_database;
 
 2.创建数据表（table）
 CREATE TABLE `gar_database`.`user` (
-  `userid` INT NOT NULL,
+  `userid` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `cruzid` VARCHAR(255) NOT NULL,
