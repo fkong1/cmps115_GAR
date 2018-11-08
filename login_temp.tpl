@@ -23,7 +23,7 @@
                   <input name="username" type="text" class="form-control" id="formGroupExampleInput" placeholder="User name" style = "width:300px;">
                </div>
                <div class="form-group" >
-                  <input name="password" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password" style = "width:300px;">
+                  <input name="password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password" style = "width:300px;">
                </div>
             </div>
             <div class = "btn_login" >

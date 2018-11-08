@@ -37,7 +37,6 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress,identity
         mycursor.execute(sql, val)
         mydb.commit()
         return True
-
     mydb.close()
 
 
@@ -55,10 +54,6 @@ def register():
         return template("register_succeed")
     else:
         return template("register_used")
-
-@get('/register-succeed')
-def register_succeed():
-    return template("register_succeed")
 
 @get('/login-succeed')
 def login_succeed():

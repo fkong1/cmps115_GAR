@@ -20,7 +20,7 @@
                         <input type="text"  name="username" class="form-control" id="username" placeholder="User Name">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <input type="text" name="cruzid" class="form-control" id="formGroupExampleInput" placeholder="Cruz ID">
