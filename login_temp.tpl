@@ -35,7 +35,7 @@
                <a href="register" class="alert-link">Sign Up</a>
             </div>
             <div class="main_link_2">
-               <a href="findpw" class="alert-link">Forgot Password</a>
+               <a href="find-password" class="alert-link">Forgot Password</a>
             </div>
          </div>
       </div>

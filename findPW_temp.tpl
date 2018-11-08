@@ -14,27 +14,27 @@
             <p>Find your password</p>
          </div>
          <div class="register_form_container">
-            <form action="/find_password" method="post">
+            <form action="/find-password" method="post">
                <div class="selection_container">
-               <input class="form-check-input" type="radio" name="radio_username" id="exampleRadios1" value="option1" checked>
-               <label class="form-check-label radio_label" for="exampleRadios1">Username: </label>
-               <input type="text" class="form-control" name="username" placeholder="find by username" style = "width:190px;">
-            </div>
+                  <input class="form-check-input" type="radio" name="choice" id="exampleRadios1" value="username" checked>
+                  <label class="form-check-label radio_label" for="exampleRadios1">Username: </label>
+                  <input type="text" class="form-control" name="username" placeholder="find by username" style = "width:190px;">
+               </div>
                <div class="selection_container">
-               <input class="form-check-input" type="radio" name="radio_email" id="exampleRadios2" value="option2">
-               <label class="form-check-label radio_label" for="exampleRadios2">Email: </label>
-               <input type="text" class="form-control" name="email" placeholder="find by email" style = "width:190px;">
-            </div>
+                  <input class="form-check-input" type="radio" name="choice" id="exampleRadios2" value="emailaddress">
+                  <label class="form-check-label radio_label" for="exampleRadios2">Email: </label>
+                  <input type="text" class="form-control" name="emailaddress" placeholder="find by email" style = "width:190px;">
+               </div>
                <div class="psw_btn_container">
-               <div class = "psw_btn_1">
-                  <button type="button-inline" class="btn btn-info" style="width: 144px;">Send</button>
+                  <div class = "psw_btn_1">
+                     <button type="submit" class="btn btn-info" style="width: 144px;">Send</button>
+                  </div>
+                  <div class = "psw_btn_2">
+                     <form action="/" method="get">
+                        <button type="button" class="btn btn-info" onclick="window.location='http://localhost:3005/'" style="width: 144px;">Cancle</button>
+                     </form>
+                  </div>
                </div>
-               <div class = "psw_btn_2">
-                  <form action="/" method="get">
-                     <button type="button-inline" class="btn btn-info" style="width: 144px;">Cancle</button>
-                  </form>
-               </div>
-            </div>
             </form>
          </div>
       </div>
