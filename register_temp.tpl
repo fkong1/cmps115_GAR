@@ -8,37 +8,27 @@
 <body class="p-3 mb-2 bg-dark text-white">
         <div class="register_container">
             <div class="register_text">Register</div>
-            <div class="register_form_container">
-                <form>
+            <form action="/register" method="post">
+                <div class="register_form_container">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="User Name">
+                        <input type="text"  name="username" class="form-control" id="username" placeholder="User Name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Password">
+                        <input type="text" name="password" class="form-control" id="password" placeholder="Password">
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Cruz ID">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Studen ID">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email Address">
-                    </div>
-                </form>
-            </div>
-            <div class="button_register">
-                <div class="submit_button" >
-                    <form action="/register-succeed" method="get">
+                </div>
+                <div class="button_register">
+                    <div class="submit_button" >
                         <button type="submit" class="btn btn-info" style="width: 148px;">Submit</button>
-                    </form>
-                </div>
+                    </div>
 
-                <div class="cancel_button">
-                    <form action="/" method="get">
-                        <button type="submit" class="btn btn-info" style="width: 148px;">Cancel</button>
-                    </form>
+                    <div class="cancel_button">
+                        <form action="/">
+                            <button type="submit" class="btn btn-info" style="width: 148px;">Cancel</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </form>
+
         </div>
 </body>

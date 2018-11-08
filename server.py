@@ -1,22 +1,58 @@
 import mysql.connector
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  passwd="password"
-)
+from bottle import get, route, run, template, view, static_file, request, post
+__author__ = 'kai'
 
-print("---database connect: ---" + str(mydb))
+from flask import Flask
 
-from bottle import get, route, run, template, view, static_file
+app = Flask(__name__)
 
 @get('/')
 def index():
     return template('login_temp')
 
+
 @get('/register')
 def register():
     return template("register_temp")
+
+def register_connectDB(username,password):
+    mydb = mysql.connector.connect(
+        host = "localhost",
+        user="root",
+        passwd="password",
+        database="gar_database"
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT username FROM user")
+    myresult = mycursor.fetchall()
+    usern = ""
+    for x in myresult:
+        usern = x[0]
+    if usern == username:
+        print "username already exist"
+        return False
+    else:
+        sql = "INSERT INTO user (username, password) VALUES (%s, %s)"
+        val = (username, password)
+        mycursor.execute(sql, val)
+        mydb.commit()
+        return True
+
+    mydb.close()
+
+
+@post('/register', methods='post')
+def register():
+    register_username = request.forms.get('username')
+    register_password = request.forms.get('password')
+    print register_username
+    if register_password == "" and register_username == "":
+        return template("login_temp")
+    if register_connectDB(register_username,register_password) == True:
+        return template("register_succeed")
+    else:
+        return template("register_temp")
 
 @get('/register-succeed')
 def register_succeed():
