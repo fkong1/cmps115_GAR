@@ -54,7 +54,7 @@ def register():
     if register_connectDB(register_username,register_password,register_cruzid,register_studentid,register_emailaddress,register_identity) == True:
         return template("register_succeed")
     else:
-        return template("register_used.tpl")
+        return template("register_used")
 
 @get('/register-succeed')
 def register_succeed():
