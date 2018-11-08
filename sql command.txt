@@ -8,12 +8,12 @@ CREATE TABLE `gar_database`.`user` (
   `password` VARCHAR(255) NOT NULL,
   `cruzid` VARCHAR(255) NOT NULL,
   `studentid` VARCHAR(7) NOT NULL,
-  `email` VARCHAR(255) NOT NULL,
+  `emailaddress` VARCHAR(255) NOT NULL,
   `identity` VARCHAR(45) NULL DEFAULT 'passenger',
   PRIMARY KEY (`userid`));
 
 3. 插入一条数据
-INSERT INTO `gar_database`.`user` (`userid`, `username`,`password`, `cruzid`, `studentid`,`email`, `identity`) VALUES ('0001', 'bill', 'hbill','hbill', '1234567','hbill@ucsc.edu', 'passenger');
+INSERT INTO `gar_database`.`user` (`userid`, `username`,`password`, `cruzid`, `studentid`,`emailaddress`, `identity`) VALUES ('0001', 'bill', 'hbill','hbill', '1234567','hbill@ucsc.edu', 'passenger');
 
 4. 删除数据表
 DROP TABLE user ;
