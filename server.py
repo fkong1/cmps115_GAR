@@ -32,15 +32,17 @@ def login_connectDB(status, cruzid, password):
     database="gar_database"
 )
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT cruzid FROM user")
+    sql = "select password from user where cruzid = '"+ cruzid +"'"
+    mycursor.execute(sql)
     myresult = mycursor.fetchone()
-    print ("myresult: " + str(myresult))
+
     if myresult is not None:
         for x in myresult:
-            usern = x
-        if usern == cruzid:
+            psw = x
+            print ("myresult: " + str(x))
+        if password == psw:
             print "password is correct"
-            sql = "UPDATE user SET identity = '"+ status +"' WHERE cruzid = '" + usern + "'"
+            sql = "UPDATE user SET identity = '"+ status +"' WHERE cruzid = '" + cruzid + "'"
             mycursor.execute(sql)
             mydb.commit()
             return True
@@ -168,5 +170,5 @@ def serve_css(filename):
     return static_file(filename, root='css', mimetype='text/css')
 
 
-run(reloader=True, host='localhost', port=3005)
+run(reloader=True, host='localhost', port=3006)
 
