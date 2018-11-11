@@ -36,6 +36,8 @@ def login_connectDB(status, cruzid, password):
     passwd="password",
     database="gar_database"
 )
+    if password == "" or cruzid == "":
+        return False
     mycursor = mydb.cursor()
     sql = "select password from user where cruzid = '"+ cruzid +"'"
     mycursor.execute(sql)
@@ -176,5 +178,5 @@ def serve_css(filename):
     return static_file(filename, root='css', mimetype='text/css')
 
 
-run(reloader=True, host='localhost', port=8000)
+run(reloader=True, host='localhost', port=8080)
 
