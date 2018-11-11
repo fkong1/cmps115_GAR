@@ -7,6 +7,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @get('/')
 def index():
     return template('login_temp')
@@ -18,6 +19,10 @@ def register():
 @get('/find-password')
 def register():
     return template("findPW_temp")
+
+@get('findPW_back_main')
+def findPW_back_main():
+    return template('login_temp')
 
 @get('/main')
 def main():
@@ -98,6 +103,7 @@ def findPW_connectDB(choice, value):
                 return True
     return False
     mydb.close()
+
 def findEmail(username):
     mydb = mysql.connector.connect(
         host="localhost",
@@ -170,5 +176,5 @@ def serve_css(filename):
     return static_file(filename, root='css', mimetype='text/css')
 
 
-run(reloader=True, host='localhost', port=3006)
+run(reloader=True, host='localhost', port=8000)
 

@@ -3,6 +3,7 @@
    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
    <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <title>Login</title>
 </head>
 
 <body class="p-3 mb-2 bg-dark text-white">

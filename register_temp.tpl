@@ -3,6 +3,7 @@
    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
    <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <title>Sign In</title>
 </head>
 
 <body class="p-3 mb-2 bg-dark text-white">
@@ -36,11 +37,8 @@
                     <div class="submit_button" >
                         <button type="submit" class="btn btn-info" style="width: 148px;">Submit</button>
                     </div>
-
                     <div class="cancel_button">
-                        <form action="/">
-                            <button type="button" class="btn btn-info" onclick="window.location='http://localhost:3005/'" style="width: 148px;">Cancel</button>
-                        </form>
+                        <a href="/"><button type="button" class="btn btn-info" style="width: 148px;">Cancel</button></a>
                     </div>
                 </div>
             </form>
