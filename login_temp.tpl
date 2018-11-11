@@ -14,13 +14,13 @@
          <form action="/login" method="post">
             <div class = "form_container">
                <div class="form-group col-md-4 main_col-md-4">
-                  <select id="inputState" class="form-control" style = "width:300px;">
+                  <select name="login_status" class="form-control" style = "width:300px;">
                      <option selected>Passenger</option>
                      <option>Driver</option>
                   </select>
                </div>
                <div class="form-group" >
-                  <input name="username" type="text" class="form-control" id="formGroupExampleInput" placeholder="User name" style = "width:300px;">
+                  <input name="cruzid" type="text" class="form-control" id="formGroupExampleInput" placeholder="CruzID" style = "width:300px;">
                </div>
                <div class="form-group" >
                   <input name="password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password" style = "width:300px;">

@@ -24,7 +24,7 @@ def main():
     return template("main_temp")
 
 
-def login_connectDB(username, password):
+def login_connectDB(status, cruzid, password):
     mydb = mysql.connector.connect(
     host = "localhost",
     user="root",
@@ -32,17 +32,20 @@ def login_connectDB(username, password):
     database="gar_database"
 )
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT username FROM user")
+    mycursor.execute("SELECT cruzid FROM user")
     myresult = mycursor.fetchone()
     print ("myresult: " + str(myresult))
     if myresult is not None:
         for x in myresult:
             usern = x
-        if usern == username:
+        if usern == cruzid:
             print "password is correct"
+            sql = "UPDATE user SET identity = '"+ status +"' WHERE cruzid = '" + usern + "'"
+            mycursor.execute(sql)
+            mydb.commit()
             return True
         else:
-            print "username is wrong"
+            print "cruzid is wrong"
             return False
     mydb.close()
 
@@ -109,12 +112,14 @@ def findEmail(username):
 
 @post('/login')
 def login():
-    login_username = request.forms.get('username')
+    login_status = request.forms.get('login_status')
+    login_cruzid = request.forms.get('cruzid')
     login_password = request.forms.get('password')
 
-    print("login_username: " + str(login_username))
+    print("login_status: " + str(login_status))
+    print("login_cruzid: " + str(login_cruzid))
     print("login_password: " + str(login_password))
-    if login_connectDB(login_username,login_password)== False:
+    if login_connectDB(login_status, login_cruzid,login_password)== False:
         return template("login_wrong")
     else:
         return template("login_succeed")
