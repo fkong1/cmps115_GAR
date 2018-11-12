@@ -11,12 +11,6 @@
             <div class="register_text">Register</div>
             <form action="/register" method="post">
                 <div class="register_form_container">
-                    <div class="form-group col-md-4 main_col-md-4">
-                        <select name="identity" id="inputState" class="form-control" style = "width:300px;">
-                            <option selected value="passenger">Passenger</option>
-                            <option value="driver">Driver</option>
-                        </select>
-                    </div>
                     <div class="form-group">
                         <input type="text"  name="username" class="form-control" id="username" placeholder="User Name">
                     </div>
