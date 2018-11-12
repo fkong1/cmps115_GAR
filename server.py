@@ -30,6 +30,9 @@ def findPW_back_main():
 def main():
     return template("main_temp")
 
+@get('/pa_request')
+def pa_request():
+    return template("pa_request")
 
 ################################################## functions will be used ##################################################
 # open the database
@@ -238,5 +241,5 @@ def serve_css(filename):
     return static_file(filename, root='css', mimetype='text/css')
 
 
-run(reloader=True, host='localhost', port=8080)
+run(reloader=True, host='localhost', port=8090)
 
