@@ -1,8 +1,8 @@
 <head>
     <!-- The line below includes stupid.css -->
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/js/bootstrap.js"></script>
+   <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
+   <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <meta http-equiv="Refresh" content="2;/">
 </head>
 
