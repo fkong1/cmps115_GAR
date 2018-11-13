@@ -148,3 +148,28 @@ a.alert-link:visited{
     text-align: center;
     font-size: 15px;
 }
+.main_btn_width{
+    width: 100px;
+}
+.login_btn_width{
+    width: 300px;
+}
+.p-3 {
+  padding: 1rem !important;
+}
+.mb-2,
+.my-2 {
+  margin-bottom: 0.5rem !important;
+}
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+a.bg-dark:hover, a.bg-dark:focus,
+button.bg-dark:hover,
+button.bg-dark:focus {
+  background-color: #1d2124 !important;
+}
+.text-white {
+  color: #fff !important;
+}
