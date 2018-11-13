@@ -2,13 +2,16 @@ import mysql.connector
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from bottle import get, route, run, template, view, static_file, request, post
+from bottle import get, route, run, template, static_file, request, post
 __author__ = 'kai'
 
 from flask import Flask
 
 app = Flask(__name__)
 
+@get('/test')
+def register():
+    return template("test")
 
 @get('/')
 def index():
@@ -94,7 +97,7 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress):
             return False
     # if the entered cruzid or email is not in the database
     # insert all entered information into database with the passenger defult
-    # then return true    
+    # then return true
     sql = "INSERT INTO user (username, password,cruzid,studentid,emailaddress,identity) VALUES (%s, %s, %s, %s, %s, %s)"
     val = (username, password,cruzid,studentid,emailaddress,"Passenger")
     mycursor.execute(sql, val)
@@ -171,7 +174,6 @@ def sentmassage(email,password):
 
     server.quit()
 
-
 ############################################ connect UI page to MySQL database ############################################
 
 @post('/login')
@@ -228,8 +230,6 @@ def password_succeed():
             return template("findPW_succeed")
     return template("findPW_wrong")     # if user enter wrong cruzid or email, go to the wrong warning page
 
-
-
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')
 def serve_image(filename):
@@ -240,6 +240,15 @@ def serve_image(filename):
 def serve_css(filename):
     return static_file(filename, root='css', mimetype='text/css')
 
+# Code for serving css stylesheets from /js directory.
+@route('/js/<filename:re:.*.js>')
+def serve_js(filename):
+    return static_file(filename, root='js', mimetype='javascript/js')
 
-run(reloader=True, host='localhost', port=8090)
+# Code for serving css stylesheets from /js directory.
+@route('/fonts/<filename:re:.*\.*>')
+def serve_js(filename):
+    return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
+
+run(reloader=True, host='localhost', port=8003)
 
