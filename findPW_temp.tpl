@@ -17,9 +17,9 @@
          <div class="register_form_container">
             <form action="/find-password" method="post">
                <div class="selection_container">
-                  <input class="form-check-input" type="radio" name="choice" id="exampleRadios1" value="username" checked>
-                  <label class="form-check-label radio_label" for="exampleRadios1">Username: </label>
-                  <input type="text" class="form-control" name="username" placeholder="find by username" style = "width:190px;">
+                  <input class="form-check-input" type="radio" name="choice" id="exampleRadios1" value="cruzid" checked>
+                  <label class="form-check-label radio_label" for="exampleRadios1">CruzID: </label>
+                  <input type="text" class="form-control" name="cruzid" placeholder="find by cruzid" style = "width:190px;">
                </div>
                <div class="selection_container">
                   <input class="form-check-input" type="radio" name="choice" id="exampleRadios2" value="emailaddress">
