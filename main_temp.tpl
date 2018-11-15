@@ -6,7 +6,7 @@
     <title>Main</title>
 </head>
 <body class="p-3 mb-2 bg-dark text-white">
-<h1></h1>
+    <div class ="login_text"><img src="images/icons8-request-service-64.png">Request List</div>
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -27,7 +27,7 @@
           <td>@mdo</td>
           <td>@mdo</td>
           <td>@mdo</td>
-          <td><button type ="butto " class="btn btn-info main_btn_width" >Accept</button></td>
+          <td><button type ="butto " class="btn btn-info main_btn_width" >Detail</button></td>
         </tr>
         <tr>
           <th scope="row">2</th>

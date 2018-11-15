@@ -2,7 +2,7 @@
 create database gar_database;
 
 2.创建数据表（table）
-CREATE TABLE `gar_database`.`user` (
+  CREATE TABLE `gar_database`.`user` (
   `userid` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
@@ -11,6 +11,29 @@ CREATE TABLE `gar_database`.`user` (
   `emailaddress` VARCHAR(255) NOT NULL,
   `identity` VARCHAR(45) NULL DEFAULT 'passenger',
   PRIMARY KEY (`userid`));
+
+  CREATE TABLE `gar_database`.`new_ride` (
+  `request_id` INT NOT NULL AUTO_INCREMENT,
+  `ride_type` VARCHAR(255) NOT NULL,
+  `start_time` VARCHAR(255) NOT NULL,
+  `end_time` VARCHAR(255) NOT NULL,
+  `repeat_status` VARCHAR(1),
+  `starting_point` VARCHAR(255) NOT NULL,
+  `destination` VARCHAR(255) NOT NULL,
+  `userid` INT NOT NULL,
+  PRIMARY KEY (`request_id`));
+
+  CREATE TABLE `gar_database`.`repeat_request` (
+  `repeat_request_id` INT NOT NULL AUTO_INCREMENT,
+  `request_id` INT NOT NULL,
+  `monday` VARCHAR(45) NULL,
+  `tuesday` VARCHAR(45) NULL,
+  `wednesday` VARCHAR(45) NULL,
+  `thursday` VARCHAR(45) NULL,
+  `friday` VARCHAR(45) NULL,
+  PRIMARY KEY (`repeat_request_id`));
+
+
 
 3. 插入一条数据
 INSERT INTO `gar_database`.`user` (`userid`, `username`,`password`, `cruzid`, `studentid`,`emailaddress`, `identity`) VALUES ('0001', 'bill', 'hbill','hbill', '1234567','hbill@ucsc.edu', 'passenger');

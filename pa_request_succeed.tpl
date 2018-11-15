@@ -5,13 +5,13 @@
    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <meta http-equiv="Refresh" content="2;main">
 </head>
-{{x=1}}
+
 <body class="p-3 mb-2 bg-dark text-white">
     <div class="register_succeed_container">
         <div class="successful_sign">
             <img src="/images/icons8-checkmark-64.png">
         </div>
         <div class="successful_title">Congratulations!</div>
-        <div class="successful_text">Welcome back!</div>
+        <div class="successful_text">You've started a new trip!</div>
     </div>
 </body>

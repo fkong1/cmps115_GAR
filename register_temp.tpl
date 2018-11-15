@@ -8,6 +8,9 @@
 
 <body class="p-3 mb-2 bg-dark text-white">
         <div class="register_container">
+            <div class ="login_logo">
+                <img src="/images/icons8-moleskine-64.png">
+            </div>
             <div class="register_text">Register</div>
             <form action="/register" method="post">
                 <div class="register_form_container">

@@ -9,6 +9,8 @@ from flask import Flask
 
 app = Flask(__name__)
 
+login_after_cruzid = ""
+
 @get('/test')
 def register():
     return template("test")
@@ -102,8 +104,23 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress):
     val = (username, password,cruzid,studentid,emailaddress,"Passenger")
     mycursor.execute(sql, val)
     mydb.commit()
-    return True
     mydb.close()
+    return True
+
+
+def new_requestDB(ride_status,input_start_time,input_end_time,input_staring_point,input_destination, login_after_cruzid):
+    login_after_cruzid = "1"
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "INSERT INTO new_ride (ride_type,start_time,end_time,repeat_status, starting_point,destination,userid) values(%s, %s, %s, %s, %s, %s, %s)"
+    print sql
+    val = (ride_status,input_start_time,input_end_time,'0',input_staring_point,input_destination,login_after_cruzid)
+    print val
+    mycursor.execute(sql, val)
+    mydb.commit()
+    mydb.close()
+    return True
+
 
 # findPW_temp connect to database
 # user can choose using cruzid or email to find password
@@ -190,6 +207,7 @@ def login():
         return template("login_wrong")
     # if cruzid and password are correct, go to the succeed page, then go to main page
     else:
+
         return template("login_succeed")
 
 @post('/register')
@@ -210,6 +228,27 @@ def register():
     else:
         return template("registe_used")
 
+@post('/new_request')
+def new_request():
+    ride_status = request.forms.get('ride_status')
+    input_start_time = request.forms.get('input_start_time')
+    input_end_time = request.forms.get('input_end_time')
+    input_staring_point = request.forms.get('input_staring_point')
+    input_destination = request.forms.get('input_destination')
+
+    print("ride_status: "+str(ride_status))
+    print("input_start_time: " + str(input_start_time))
+    print("input_end_time: " + str(input_end_time))
+    print("input_staring_point: " + str(input_staring_point))
+    print("input_destination: " + str(input_destination))
+
+    if input_start_time == "" or input_end_time == "" or input_staring_point == "" or input_staring_point == "" or input_destination == "":
+        return template("pa_request_error")
+
+    if new_requestDB(ride_status,input_start_time,input_end_time,input_staring_point,input_destination, login_after_cruzid) == True:
+        return template("pa_request_succeed")
+
+
 @post('/find-password')
 def password_succeed():
     find_choice = request.forms.get('choice')           # get the user choice(cruzid, email) from user entered
@@ -218,6 +257,7 @@ def password_succeed():
 
     # if user enter correct cruzid or email, go to the succeed  page, the password will send to the user email
     if find_choice == "cruzid":
+        print("choose cruzid")
         if findPW_connectDB(find_choice, user_cruzid) == True:
             email = findEmail(user_cruzid)          # if the entered cruzid is correct, get the email under the cruzid
             user_pasword =  findPassword(email)
@@ -250,5 +290,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8003)
+run(reloader=True, host='localhost', port=8006)
 

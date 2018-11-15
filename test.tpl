@@ -1,77 +1,39 @@
 <head>
-   <!-- The line below includes stupid.css -->
-    <meta charset="utf-8">
     <link href="/css/bootstrap-3.3.1.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/css/bootstrap-3.3.1-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/moment.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-3.3.1-datetimepicker.min.js"></script>
-    <title>Main</title>
-</head>
-<body class="p-3 mb-2 bg-dark">
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker2'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker2').datetimepicker({
-                    locale: 'ru'
-                });
-            });
-        </script>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker3').datetimepicker({
-                    format: 'MM/DD/YYYY'
-                });
-            });
-        </script>
-    </div>
-</div>
-</body>
+   <link href="/css/bootstrap-3.3.1-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+   <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
+   <script type="text/javascript" src="/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/js/moment.min.js"></script>
+   <script type="text/javascript" src="js/bootstrap-3.3.1.min.js"></script>
+   <script type="text/javascript" src="js/bootstrap-3.3.1-datetimepicker.min.js"></script>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL1YkEcCMEebnwcML3AaISv0i0L0fAqX0&callback=initMap"
+    async defer></script>
+  </body>

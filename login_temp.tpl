@@ -9,7 +9,7 @@
 <body class="p-3 mb-2 bg-dark text-white">
       <div class="login_container">
          <div class ="login_logo">
-            <img src="https://firebasestorage.googleapis.com/v0/b/cmps115-gar.appspot.com/o/images%2Ficons8-taxi-50.png?alt=media&token=b411c2c1-9874-4428-ab7d-f0a703abb9b0">
+            <img src="/images/icons8-taxi-50.png">
          </div>
          <div class ="login_text">Login</div>
          <form action="/login" method="post">

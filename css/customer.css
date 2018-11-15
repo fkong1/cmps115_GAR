@@ -8,10 +8,7 @@
 }
 
 .chart_container {
-
     width: 300px;
-
-
 }
 
 .login_logo{
@@ -87,8 +84,6 @@ a.alert-link:visited{
     float: left;
     width: 90px;
     height:38px;
-}
-.psw_btn_container{
 }
 .psw_btn_1{
     float: left;
@@ -172,4 +167,93 @@ button.bg-dark:focus {
 }
 .text-white {
   color: #fff !important;
+}
+
+.newrider_container{
+    border: 1px solid #bd2130;
+    height: 500px;
+}
+.datetime_select_width{
+    width: 310px;
+}
+.btn-info{
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+.request_btn_width{
+    width: 148px;
+}
+.newrider_container_left{
+    border: 1px solid #007bff;
+    float: left;
+    height: 100%;
+    width: 50%
+}
+.newrider_container_right{
+    border: 1px solid #fd7e14;
+    float: right;
+    height:100%;
+    width: 50%;
+}
+.newrider_row_container{
+    height: 9%;
+}
+.newrider_checkbox_row_container{
+    height:20%;
+    float: right;
+    width: 100%;
+    padding-top: 9px;
+}
+.newrider_row_container_label{
+    float: left;
+    width: 28%;
+    height:100%;
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 10px;
+    font-size: 18px;
+}
+.newrider_row_container_input{
+    float: right;
+    width: 72%;
+    height:100%;
+    padding-top: 3px;
+}
+.nerrider_checkbox_group_label{
+    height: 100%;
+    float: left;
+    width: 28%;
+    padding-top: 100px;
+    padding-right: 10px;
+    font-size: 18px;
+}
+.nerrider_checkbox_group{
+    height: 100%;
+    float: right;
+    width: 72%;
+    font-size: 18px;
+}
+.newrider_checkbox_area{
+    height: 46%;
+    display: none;
+}
+.newrider_btn_left{
+    float: left;
+    text-align: right;
+    width: 50%;
+    height: 100%;
+    padding-right: 5px;
+    padding-top: 3px;
+}
+.newrider_btn_right{
+    float: right;
+    width: 50%;
+    text-align: left;
+    height: 100%;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+.newrider_btn_width{
+    width: 310px;
 }
