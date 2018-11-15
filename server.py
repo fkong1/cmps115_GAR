@@ -207,7 +207,8 @@ def login():
         return template("login_wrong")
     # if cruzid and password are correct, go to the succeed page, then go to main page
     else:
-
+        # if passenger return passenger page
+        # if driver return driver page
         return template("login_succeed")
 
 @post('/register')
