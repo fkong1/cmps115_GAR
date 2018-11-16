@@ -7,40 +7,32 @@
    <script type="text/javascript" src="/js/moment.min.js"></script>
    <script type="text/javascript" src="js/bootstrap-3.3.1.min.js"></script>
    <script type="text/javascript" src="js/bootstrap-3.3.1-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/customer.js"></script>
    <title>New Ride</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
 </head>
-<script type="text/javascript">
-   $(function () {
-       $('#datetimepicker1').datetimepicker();
-       $('#datetimepicker2').datetimepicker();
 
-       $('#rider_type_id').change(function() {
-        var a = $("#rider_type_id option:selected").val();
-            if (a == "Single Ride"){
-                $('#riderType').hide();
-            }
-            else{
-                 $('#riderType').show();
-            }
-        });
-   });
-</script>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
 <body class="p-3 mb-2 bg-dark">
+
+<nav class="navbar navbar-default" role="navigation" style="background-color:#343a40 !important; border-color: #343a40;">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+          <img src="images/icons8-customer-64.png" style="width: 32px; height: 32px;margin-top: 8px;">
+        <li class="dropdown" style="float:right;">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cruz ID <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Log off</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
    <div class ="login_text text-white"><img src="/images/icons8-taxi-booking-office-64.png"> New Ride</div>
    <div class="newrider_container">
       <div class="newrider_container_left">

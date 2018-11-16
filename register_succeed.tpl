@@ -3,6 +3,7 @@
    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
    <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="images/icons8_cab_stand_50_fDM_icon.ico" type="image/x-icon" />
     <meta http-equiv="Refresh" content="2;main">
 </head>
 

@@ -274,7 +274,7 @@ def password_succeed():
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')
 def serve_image(filename):
-    return static_file(filename, root='images', mimetype='image/png jpg')
+    return static_file(filename, root='images', mimetype='image/png jpg ico')
 
 # Code for serving css stylesheets from /css directory.
 @route('/css/<filename:re:.*.css>')
@@ -291,5 +291,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8006)
+run(reloader=True, host='localhost', port=8007)
 
