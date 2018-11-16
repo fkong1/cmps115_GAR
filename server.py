@@ -209,7 +209,7 @@ def login():
     else:
         # if passenger return passenger page
         # if driver return driver page
-        return template("login_succeed")
+        return template("login_succeed", login_status=login_status)
 
 @post('/register')
 def register():
@@ -291,5 +291,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8007)
+run(reloader=True, host='localhost', port=8008)
 
