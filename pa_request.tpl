@@ -11,6 +11,7 @@
    <title>New Ride</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+
 </head>
 
 <body class="p-3 mb-2 bg-dark">
@@ -21,7 +22,13 @@
       <ul class="nav navbar-nav navbar-right">
           <img src="images/icons8-customer-64.png" style="width: 32px; height: 32px;margin-top: 8px;">
         <li class="dropdown" style="float:right;">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cruz ID <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <script>
+                var queryString = decodeURIComponent(window.location.search); //parsing
+                queryString = queryString.substring(1);
+                document.write(queryString);
+              </script>
+              <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Profile</a></li>
             <li class="divider"></li>
