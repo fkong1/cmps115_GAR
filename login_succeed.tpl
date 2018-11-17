@@ -5,9 +5,8 @@
    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="images/icons8_cab_stand_50_fDM_icon.ico" type="image/x-icon" />
 
-    {{login_status}} = driver
-    {{login_status == 'Driver' }}
-    <meta http-equiv="Refresh" content="2;main">
+
+
 
 </head>
 
@@ -19,9 +18,26 @@
         <div class="successful_title">Congratulations!</div>
         <div class="successful_text">Welcome back!</div>
 
-    </div>
+        <% if login_status == 'Driver': %>
+        <script>
+        var value="{{login_username}}";
+        var queryString = "?" + value;
+        setTimeout(function(){
+                window.location.href = "main" + queryString;
+                }, 1000);
+        </script>
+    <% end %>
+    <% if login_status == 'Passenger': %>
+        <script>
+            var value="{{login_username}}";
+            var queryString = "?" + value;
+            setTimeout(function(){
+                window.location.href = "pa_request" + queryString;
+                }, 1000);
 
-    <!--p v-if="{{login_status == 'Passenger'}}=== True">tt</p>
-    <p v-if="{{login_status == 'Driver'}} === False"> ee </p-->
+        </script>
+    <% end %>
+
+    </div>
 
 </body>

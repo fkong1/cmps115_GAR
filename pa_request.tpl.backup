@@ -20,22 +20,18 @@
             <ul class="nav navbar-nav navbar-right">
                <img src="images/icons8-customer-64.png" style="width: 32px; height: 32px;margin-top: 8px;">
                <li class="dropdown" style="float:right;">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                      <script>
-                var queryString = decodeURIComponent(window.location.search); //parsing
-                queryString = queryString.substring(1);
-                document.write(queryString);
-              </script>
-                     <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cruz ID <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                      <li><a href="#">Profile</a></li>
                      <li class="divider"></li>
-                     <li><a href="/">Log off</a></li>
+                     <li><a href="#">Log off</a></li>
                   </ul>
                </li>
             </ul>
          </div>
+         <!-- /.navbar-collapse -->
       </div>
+      <!-- /.container-fluid -->
    </nav>
    <div class ="login_text text-white"><img src="/images/icons8-taxi-booking-office-64.png"> New Ride</div>
    <div class="newrider_container">
@@ -106,15 +102,13 @@
             <div class="newrider_row_container">
                <div class="newrider_row_container_label text-white">Starting Point: </div>
                <div class="newrider_row_container_input">
-                   <!--<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">-->
-                   <input id="origin-input" class="form-control newrider_btn_width" type="text" placeholder="Enter an origin location" name="input_staring_point"/>
+                  <input class="form-control newrider_btn_width" type="text" placeholder="Starting Point" name="input_staring_point"/>
                </div>
             </div>
             <div class="newrider_row_container">
                <div class="newrider_row_container_label text-white">Destination: </div>
                <div class="newrider_row_container_input">
-                  <!--<input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">-->
-                   <input id="destination-input" class="form-control newrider_btn_width" type="text" placeholder="Enter a destination location" name="input_destination"/>
+                  <input class="form-control newrider_btn_width" type="text" placeholder="Destination" name="input_destination"/>
                </div>
             </div>
             <div class="newrider_row_container">
@@ -128,17 +122,19 @@
          </form>
       </div>
       <div class="newrider_container_right text-white">
-       <!--<div id="mode-selector" class="controls">-->
-          <!--<input type="radio" name="type" id="changemode-walking">-->
-          <!--<label for="changemode-walking">Walking</label>-->
-          <!--<input type="radio" name="type" id="changemode-transit">-->
-          <!--<label for="changemode-transit">Transit</label>-->
-          <!--<input type="radio" name="type" id="changemode-driving" checked="checked">-->
-          <!--<label for="changemode-driving">Driving</label>-->
-       <!--</div>-->
-          <div id="map"></div>
       </div>
    </div>
+   <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
+   <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
+   <div id="mode-selector" class="controls">
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Walking</label>
+      <input type="radio" name="type" id="changemode-transit">
+      <label for="changemode-transit">Transit</label>
+      <input type="radio" name="type" id="changemode-driving">
+      <label for="changemode-driving">Driving</label>
+   </div>
+   <div id="map"></div>
    <script>
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
@@ -164,7 +160,7 @@
         this.travelMode = 'WALKING';
         var originInput = document.getElementById('origin-input');
         var destinationInput = document.getElementById('destination-input');
-        //var modeSelector = document.getElementById('mode-selector');
+        var modeSelector = document.getElementById('mode-selector');
         this.directionsService = new google.maps.DirectionsService;
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
@@ -174,16 +170,16 @@
         var destinationAutocomplete = new google.maps.places.Autocomplete(
             destinationInput, {placeIdOnly: true});
 
-        //this.setupClickListener('changemode-walking', 'WALKING');
-        //this.setupClickListener('changemode-transit', 'TRANSIT');
-        //this.setupClickListener('changemode-driving', 'DRIVING');
+        this.setupClickListener('changemode-walking', 'WALKING');
+        this.setupClickListener('changemode-transit', 'TRANSIT');
+        this.setupClickListener('changemode-driving', 'DRIVING');
 
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
 
-        //this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
-        //this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
-        //this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
       }
 
       // Sets a listener on a radio button to change the filter type on Places
