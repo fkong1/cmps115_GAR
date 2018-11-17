@@ -6,8 +6,16 @@
   <script type="text/javascript" src="/js/bootstrap.min.js"></script>
   <link rel="shortcut icon" href="images/icons8_cab_stand_50_fDM_icon.ico" type="image/x-icon" />
   <title>Main</title>
+    <script>
+        var queryString = decodeURIComponent(window.location.search);
+        queryString = queryString.substring(1);
+        var queries = queryString.split("&");
+    </script>
 </head>
 <body class="p-3 mb-2 bg-dark text-white">
+<script>
+    document.write("userid = "+queries[1]);
+</script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse text_to_right" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -15,10 +23,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <script>
-                var queryString = decodeURIComponent(window.location.search); //parsing
-                queryString = queryString.substring(1);
-                document.write(queryString);
-              </script>
+               document.write(queries[0]);
+           </script>
+            <!--queries[1] is userid -->
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Profile</a>

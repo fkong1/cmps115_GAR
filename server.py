@@ -199,6 +199,8 @@ def login():
     login_cruzid = request.forms.get('cruzid')               # get the cruzid from user entered
     login_password = request.forms.get('password')            # get the password from user entered
 
+
+
     mydb = connectDB()
     mycursor = mydb.cursor()
     mycursor.execute(
@@ -207,6 +209,15 @@ def login():
 
     for x in myresult:
         login_username = x[0]
+
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    mycursor.execute(
+        "select userid from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
+    myresult = mycursor.fetchall()
+
+    for x in myresult:
+        login_userid = x[0]
 
     print("login_status: " + str(login_status))
     print("login_cruzid: " + str(login_cruzid))
@@ -218,7 +229,7 @@ def login():
     else:
         # if passenger return passenger page
         # if driver return driver page
-        return template("login_succeed", login_status=login_status, login_username = login_username)
+        return template("login_succeed", login_status=login_status, login_username = login_username, login_userid=login_userid)
 
 @post('/register')
 def register():
@@ -300,5 +311,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8009)
+run(reloader=True, host='localhost', port=8001)
 

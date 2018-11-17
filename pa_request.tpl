@@ -12,8 +12,19 @@
    <title>New Ride</title>
    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
    <meta charset="utf-8">
+    <script>
+        var queryString = decodeURIComponent(window.location.search);
+        queryString = queryString.substring(1);
+        var queries = queryString.split("&");
+    </script>
 </head>
 <body class="p-3 mb-2 bg-dark">
+<div class="text-white">
+  <script>
+    document.write("userid = "+queries[1]);
+  </script>
+</div>
+
    <nav class="navbar navbar-default" role="navigation" style="background-color:#343a40 !important; border-color: #343a40;">
       <div class="container-fluid">
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -22,10 +33,8 @@
                <li class="dropdown" style="float:right;">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                       <script>
-                var queryString = decodeURIComponent(window.location.search); //parsing
-                queryString = queryString.substring(1);
-                document.write(queryString);
-              </script>
+                           document.write(queries[0]);
+                       </script>
                      <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                      <li><a href="#">Profile</a></li>
