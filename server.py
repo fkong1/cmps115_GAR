@@ -9,18 +9,23 @@ from flask import Flask
 
 app = Flask(__name__)
 
-logged_cruz_id = ""
+logged_user_id = ""
 logged_username = ""
 
 @get('/test')
-def register():
+def test():
     return template("test")
+
+@get('/test1')
+def test1():
+    return template("test1")
+
 
 @get('/')
 def index():
-    global logged_cruz_id
+    global logged_user_id
     global logged_username
-    logged_cruz_id = ""
+    logged_user_id = ""
     logged_username = ""
     return template('login_temp')
 
@@ -38,11 +43,12 @@ def findPW_back_main():
 
 @get('/main')
 def main():
-    print("main logged_cruz_id: "+str(logged_cruz_id))
+    print("main logged_user_id: "+str(logged_user_id))
     print("main logged_username: "+str(logged_username))
     if logged_username == "":
         return template('must_login')
     else:
+        main_DB(logged_user_id)
         return template("main_temp",logged_username=logged_username)
 
 @get('/pa_request')
@@ -73,13 +79,14 @@ def login_connectDB(status, cruzid, password,login_username):
     if password == "" or cruzid == "":
         return False
     mycursor = mydb.cursor()
-    sql = "select password from user where cruzid = '"+ cruzid +"'"     # select the password with the entered cruzid from database
+    sql = "select password,userid from user where cruzid = '"+ cruzid +"'"     # select the password with the entered cruzid from database
     mycursor.execute(sql)
-    myresult = mycursor.fetchone()         # let myresult equal the password we selected
+    myresult = mycursor.fetchall()         # let myresult equal the password we selected
 
     if myresult is not None:
         for x in myresult:
-            psw = x
+            psw = x[0]
+            user_id = x[1]
             print ("myresult: " + str(x))
         # if the entered password is correct, return true, else return false
         if password == psw:
@@ -91,11 +98,11 @@ def login_connectDB(status, cruzid, password,login_username):
             sql = "UPDATE user SET identity = '"+ status +"' WHERE cruzid = '" + cruzid + "'"
             mycursor.execute(sql)
             mydb.commit()
-            global logged_cruz_id
+            global logged_user_id
             global logged_username
-            logged_cruz_id = cruzid
+            logged_user_id = user_id
             logged_username = login_username
-            print ("logged_cruz_id aaa: " + str(logged_cruz_id))
+            print ("logged_user_id aaa: " + str(logged_user_id))
             return True
         else:
             print "cruzid is wrong"
@@ -125,6 +132,8 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress):
     mydb.close()
     return True
 
+def main_DB(logged_user_id):
+    print("function main_DB: "+str(logged_user_id))
 
 def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5):
     mydb = connectDB()
@@ -142,13 +151,12 @@ def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5):
     mydb.close()
     return repeat_request_id
 
-def new_requestDB(ride_status,input_start_time,input_end_time,repeat_status,input_staring_point,input_destination, login_after_cruzid):
-    login_after_cruzid ="1"
+def new_requestDB(ride_status,input_start_time,input_end_time,repeat_status,input_staring_point,input_destination, logged_user_id):
     mydb = connectDB()
     mycursor = mydb.cursor()
     sql = "INSERT INTO new_ride (ride_type,start_time,end_time,repeat_request_id, starting_point,destination,userid) values(%s, %s, %s, %s, %s, %s, %s)"
     print sql
-    val = (ride_status, input_start_time, input_end_time, repeat_status, input_staring_point, input_destination,login_after_cruzid)
+    val = (ride_status, input_start_time, input_end_time, repeat_status, input_staring_point, input_destination,logged_user_id)
     print val
     mycursor.execute(sql, val)
     mydb.commit()
@@ -251,7 +259,7 @@ def login():
     else:
         # if passenger return passenger page
         # if driver return driver page
-        print ("logged_cruz_id: " + str(logged_cruz_id))
+        print ("logged_user_id: " + str(logged_user_id))
         return template("login_succeed", login_status=login_status, login_username = login_username)
 
 @post('/register')
@@ -279,6 +287,7 @@ def new_request():
     input_end_time = request.forms.get('input_end_time')
     input_staring_point = request.forms.get('input_staring_point')
     input_destination = request.forms.get('input_destination')
+    repeat_request_id=0
     ck_1 = request.forms.get('ck_1')
     ck_2 = request.forms.get('ck_2')
     ck_3 = request.forms.get('ck_3')
@@ -315,16 +324,17 @@ def new_request():
                 return template("pa_request_error")
             else:
                 repeat_request_id = repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5)
-        print repeat_request_id
+        else:
+            print("do nothing")
 
-        if new_requestDB(ride_status, input_start_time, input_end_time,repeat_request_id, input_staring_point, input_destination,logged_cruz_id) == True:
+        print("repeat_request_id: "+ str(repeat_request_id))
+
+        if new_requestDB(ride_status, input_start_time, input_end_time,repeat_request_id, input_staring_point, input_destination,logged_user_id) == True:
             return template("pa_request_succeed")
         else:
             return template("pa_request_error")
     else:
         return template("pa_request_error")
-
-
 
 @post('/find-password')
 def password_succeed():
@@ -346,6 +356,7 @@ def password_succeed():
             sentmassage(user_email, user_pasword)
             return template("findPW_succeed")
     return template("findPW_wrong")     # if user enter wrong cruzid or email, go to the wrong warning page
+
 
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')
