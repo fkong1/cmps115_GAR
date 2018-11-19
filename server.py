@@ -9,7 +9,8 @@ from flask import Flask
 
 app = Flask(__name__)
 
-login_after_cruzid = ""
+logged_cruz_id = ""
+logged_username = ""
 
 @get('/test')
 def register():
@@ -17,6 +18,10 @@ def register():
 
 @get('/')
 def index():
+    global logged_cruz_id
+    global logged_username
+    logged_cruz_id = ""
+    logged_username = ""
     return template('login_temp')
 
 @get('/register')
@@ -33,11 +38,19 @@ def findPW_back_main():
 
 @get('/main')
 def main():
-    return template("main_temp")
+    print("main logged_cruz_id: "+str(logged_cruz_id))
+    print("main logged_username: "+str(logged_username))
+    if logged_username == "":
+        return template('must_login')
+    else:
+        return template("main_temp",logged_username=logged_username)
 
 @get('/pa_request')
 def pa_request():
-    return template("pa_request")
+    if logged_username == "":
+        return template('must_login')
+    else:
+        return template("pa_request",logged_username=logged_username)
 
 ################################################## functions will be used ##################################################
 # open the database
@@ -53,7 +66,7 @@ def connectDB():
 # login_temp connect to database
 # if enter the correct cruzid and password, then login succeed
 # if enter wrong or noting, then can't login
-def login_connectDB(status, cruzid, password):
+def login_connectDB(status, cruzid, password,login_username):
     # conect the database
     mydb = connectDB()
     # check if the enter is empty
@@ -78,6 +91,11 @@ def login_connectDB(status, cruzid, password):
             sql = "UPDATE user SET identity = '"+ status +"' WHERE cruzid = '" + cruzid + "'"
             mycursor.execute(sql)
             mydb.commit()
+            global logged_cruz_id
+            global logged_username
+            logged_cruz_id = cruzid
+            logged_username = login_username
+            print ("logged_cruz_id aaa: " + str(logged_cruz_id))
             return True
         else:
             print "cruzid is wrong"
@@ -108,19 +126,34 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress):
     return True
 
 
-def new_requestDB(ride_status,input_start_time,input_end_time,input_staring_point,input_destination, login_after_cruzid):
-    login_after_cruzid = "1"
+def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5):
     mydb = connectDB()
     mycursor = mydb.cursor()
-    sql = "INSERT INTO new_ride (ride_type,start_time,end_time,repeat_status, starting_point,destination,userid) values(%s, %s, %s, %s, %s, %s, %s)"
+    sql = "INSERT INTO repeat_request (monday, tuesday,wednesday,thursday,friday) values(%s, %s, %s, %s, %s)"
+    val = (ck_1,ck_2,ck_3,ck_4,ck_5)
+    mycursor.execute(sql, val)
+    mydb.commit()
+
+    sql = "select repeat_request_id from repeat_request  order by repeat_request_id desc limit 1"
+    mycursor.execute(sql)
+    myresult = mycursor.fetchone()  # let myresult equal the password we selected
+    for x in myresult:
+        repeat_request_id = x
+    mydb.close()
+    return repeat_request_id
+
+def new_requestDB(ride_status,input_start_time,input_end_time,repeat_status,input_staring_point,input_destination, login_after_cruzid):
+    login_after_cruzid ="1"
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "INSERT INTO new_ride (ride_type,start_time,end_time,repeat_request_id, starting_point,destination,userid) values(%s, %s, %s, %s, %s, %s, %s)"
     print sql
-    val = (ride_status,input_start_time,input_end_time,'0',input_staring_point,input_destination,login_after_cruzid)
+    val = (ride_status, input_start_time, input_end_time, repeat_status, input_staring_point, input_destination,login_after_cruzid)
     print val
     mycursor.execute(sql, val)
     mydb.commit()
     mydb.close()
     return True
-
 
 # findPW_temp connect to database
 # user can choose using cruzid or email to find password
@@ -212,12 +245,13 @@ def login():
     print("login_cruzid: " + str(login_cruzid))
     print("login_password: " + str(login_password))
     # if enter wrong or noting, then can't login, go to the login wrong warning page
-    if login_connectDB(login_status, login_cruzid,login_password)== False:
+    if login_connectDB(login_status, login_cruzid,login_password,login_username)== False:
         return template("login_wrong")
     # if cruzid and password are correct, go to the succeed page, then go to main page
     else:
         # if passenger return passenger page
         # if driver return driver page
+        print ("logged_cruz_id: " + str(logged_cruz_id))
         return template("login_succeed", login_status=login_status, login_username = login_username)
 
 @post('/register')
@@ -245,18 +279,51 @@ def new_request():
     input_end_time = request.forms.get('input_end_time')
     input_staring_point = request.forms.get('input_staring_point')
     input_destination = request.forms.get('input_destination')
+    ck_1 = request.forms.get('ck_1')
+    ck_2 = request.forms.get('ck_2')
+    ck_3 = request.forms.get('ck_3')
+    ck_4 = request.forms.get('ck_4')
+    ck_5 = request.forms.get('ck_5')
 
-    print("ride_status: "+str(ride_status))
-    print("input_start_time: " + str(input_start_time))
-    print("input_end_time: " + str(input_end_time))
-    print("input_staring_point: " + str(input_staring_point))
-    print("input_destination: " + str(input_destination))
+    if input_start_time != "" or input_end_time != "" or input_staring_point != "" or input_staring_point != "" or input_destination != "":
+        if ride_status == "Long Period":
+            if ck_1 == 'on':
+                ck_1 = 1
+            else:
+                ck_1 = 0
 
-    if input_start_time == "" or input_end_time == "" or input_staring_point == "" or input_staring_point == "" or input_destination == "":
+            if ck_2 == 'on':
+                ck_2 = 1
+            else:
+                ck_2 = 0
+
+            if ck_3 == 'on':
+                ck_3 = 1
+            else:
+                ck_3 = 0
+
+            if ck_4 == 'on':
+                ck_4 = 1
+            else:
+                ck_4 = 0
+
+            if ck_5 == 'on':
+                ck_5 = 1
+            else:
+                ck_5 = 0
+            if (ck_1 == 0 and ck_2 == 0 and ck_3 == 0 and ck_4 == 0 and ck_5 == 0):
+                return template("pa_request_error")
+            else:
+                repeat_request_id = repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5)
+        print repeat_request_id
+
+        if new_requestDB(ride_status, input_start_time, input_end_time,repeat_request_id, input_staring_point, input_destination,logged_cruz_id) == True:
+            return template("pa_request_succeed")
+        else:
+            return template("pa_request_error")
+    else:
         return template("pa_request_error")
 
-    if new_requestDB(ride_status,input_start_time,input_end_time,input_staring_point,input_destination, login_after_cruzid) == True:
-        return template("pa_request_succeed")
 
 
 @post('/find-password')
@@ -300,5 +367,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8009)
+run(reloader=True, host='localhost', port=8101)
 

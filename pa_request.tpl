@@ -21,12 +21,9 @@
                <img src="images/icons8-customer-64.png" style="width: 32px; height: 32px;margin-top: 8px;">
                <li class="dropdown" style="float:right;">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                      <script>
-                var queryString = decodeURIComponent(window.location.search); //parsing
-                queryString = queryString.substring(1);
-                document.write(queryString);
-              </script>
-                     <span class="caret"></span></a>
+                     {{logged_username}}
+                     <span class="caret"></span>
+                  </a>
                   <ul class="dropdown-menu" role="menu">
                      <li><a href="#">Profile</a></li>
                      <li class="divider"></li>
@@ -81,24 +78,24 @@
                   <div class = "nerrider_checkbox_group_label text-white text-right">Repeat: </div>
                   <div class = "nerrider_checkbox_group">
                      <div class="newrider_checkbox_row_container">
-                        <input type="checkbox" class="custom-control-input1" id="customCheck1">
-                        <label class="custom-control-label1 text-white" for="customCheck1">Monday</label>
+                        <input type="checkbox" class="custom-control-input1" id="ck_1" name="ck_1">
+                        <label class="custom-control-label1 text-white" for="ck_1" >Monday</label>
                      </div>
                      <div class="newrider_checkbox_row_container">
-                        <input type="checkbox" class="custom-control-input1" id="customCheck2">
-                        <label class="custom-control-label1 text-white" for="customCheck2">Tuesday</label>
+                        <input type="checkbox" class="custom-control-input1" id="ck_2" name="ck_2">
+                        <label class="custom-control-label1 text-white" for="ck_2">Tuesday</label>
                      </div>
                      <div class="newrider_checkbox_row_container">
-                        <input type="checkbox" class="custom-control-input1" id="customCheck3">
-                        <label class="custom-control-label1 text-white" for="customCheck3">Wednesday</label>
+                        <input type="checkbox" class="custom-control-input1" id="ck_3" name="ck_3">
+                        <label class="custom-control-label1 text-white" for="ck_3">Wednesday</label>
                      </div>
                      <div class="newrider_checkbox_row_container">
-                        <input type="checkbox" class="custom-control-input1" id="customCheck4">
-                        <label class="custom-control-label1 text-white" for="customCheck4">Thursday</label>
+                        <input type="checkbox" class="custom-control-input1" id="ck_4" name="ck_4">
+                        <label class="custom-control-label1 text-white" for="ck_4">Thursday</label>
                      </div>
                      <div class="newrider_checkbox_row_container">
-                        <input type="checkbox" class="custom-control-input1" id="customCheck5">
-                        <label class="custom-control-label1 text-white" for="customCheck4">Friday</label>
+                        <input type="checkbox" class="custom-control-input1" id="ck_5" name="ck_5">
+                        <label class="custom-control-label1 text-white" for="ck_5">Friday</label>
                      </div>
                   </div>
                </div>
@@ -106,18 +103,19 @@
             <div class="newrider_row_container">
                <div class="newrider_row_container_label text-white">Starting Point: </div>
                <div class="newrider_row_container_input">
-                   <!--<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">-->
-                   <input id="origin-input" class="form-control newrider_btn_width" type="text" placeholder="Enter an origin location" name="input_staring_point"/>
+                  <!--<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">-->
+                  <input id="origin-input" class="form-control newrider_btn_width" type="text" placeholder="Enter an origin location" name="input_staring_point"/>
                </div>
             </div>
             <div class="newrider_row_container">
                <div class="newrider_row_container_label text-white">Destination: </div>
                <div class="newrider_row_container_input">
                   <!--<input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">-->
-                   <input id="destination-input" class="form-control newrider_btn_width" type="text" placeholder="Enter a destination location" name="input_destination"/>
+                  <input id="destination-input" class="form-control newrider_btn_width" type="text" placeholder="Enter a destination location" name="input_destination"/>
                </div>
             </div>
             <div class="newrider_row_container">
+               <div class="newrider_row_container_label"></div>
                <div class="newrider_btn_left">
                   <button type ="submit" class="btn btn-info request_btn_width">Submit</button>
                </div>
@@ -128,15 +126,15 @@
          </form>
       </div>
       <div class="newrider_container_right text-white">
-       <!--<div id="mode-selector" class="controls">-->
-          <!--<input type="radio" name="type" id="changemode-walking">-->
-          <!--<label for="changemode-walking">Walking</label>-->
-          <!--<input type="radio" name="type" id="changemode-transit">-->
-          <!--<label for="changemode-transit">Transit</label>-->
-          <!--<input type="radio" name="type" id="changemode-driving" checked="checked">-->
-          <!--<label for="changemode-driving">Driving</label>-->
-       <!--</div>-->
-          <div id="map"></div>
+         <!--<div id="mode-selector" class="controls">-->
+         <!--<input type="radio" name="type" id="changemode-walking">-->
+         <!--<label for="changemode-walking">Walking</label>-->
+         <!--<input type="radio" name="type" id="changemode-transit">-->
+         <!--<label for="changemode-transit">Transit</label>-->
+         <!--<input type="radio" name="type" id="changemode-driving" checked="checked">-->
+         <!--<label for="changemode-driving">Driving</label>-->
+         <!--</div>-->
+         <div id="map"></div>
       </div>
    </div>
    <script>
@@ -161,7 +159,7 @@
         this.map = map;
         this.originPlaceId = null;
         this.destinationPlaceId = null;
-        this.travelMode = 'WALKING';
+        this.travelMode = 'DRIVING';
         var originInput = document.getElementById('origin-input');
         var destinationInput = document.getElementById('destination-input');
         //var modeSelector = document.getElementById('mode-selector');

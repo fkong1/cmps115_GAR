@@ -132,4 +132,48 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL1YkEcCMEebnwcML3AaISv0i0L0fAqX0&libraries=places&callback=initMap"
         async defer></script>
+
+  <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker5'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker5').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker6'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker6').datetimepicker({
+                    format: 'L'
+                });
+            });
+        </script>
+    </div>
+</div>
   </body>

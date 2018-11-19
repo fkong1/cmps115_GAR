@@ -14,11 +14,7 @@
       <img src="images/icons8-customer-64.png" style="width: 32px; height: 32px; float: right; margin-top: 3px">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <script>
-                var queryString = decodeURIComponent(window.location.search); //parsing
-                queryString = queryString.substring(1);
-                document.write(queryString);
-              </script>
+           {{logged_username}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Profile</a>

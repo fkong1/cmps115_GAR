@@ -17,7 +17,7 @@ create database gar_database;
   `ride_type` VARCHAR(255) NOT NULL,
   `start_time` VARCHAR(255) NOT NULL,
   `end_time` VARCHAR(255) NOT NULL,
-  `repeat_status` VARCHAR(1),
+  `repeat_request_id` INT NOT NULL,
   `starting_point` VARCHAR(255) NOT NULL,
   `destination` VARCHAR(255) NOT NULL,
   `userid` INT NOT NULL,
@@ -25,7 +25,6 @@ create database gar_database;
 
   CREATE TABLE `gar_database`.`repeat_request` (
   `repeat_request_id` INT NOT NULL AUTO_INCREMENT,
-  `request_id` INT NOT NULL,
   `monday` VARCHAR(45) NULL,
   `tuesday` VARCHAR(45) NULL,
   `wednesday` VARCHAR(45) NULL,
@@ -33,10 +32,10 @@ create database gar_database;
   `friday` VARCHAR(45) NULL,
   PRIMARY KEY (`repeat_request_id`));
 
-
-
 3. 插入一条数据
 INSERT INTO `gar_database`.`user` (`userid`, `username`,`password`, `cruzid`, `studentid`,`emailaddress`, `identity`) VALUES ('0001', 'bill', 'hbill','hbill', '1234567','hbill@ucsc.edu', 'passenger');
 
 4. 删除数据表
 DROP TABLE user ;
+DROP TABLE new_ride;
+DROP TABLE repeat_request;
