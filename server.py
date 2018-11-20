@@ -78,6 +78,7 @@ def login_connectDB(status, cruzid, password,login_username):
     # check if the enter is empty
     if password == "" or cruzid == "":
         return False
+
     mycursor = mydb.cursor()
     sql = "select password,userid from user where cruzid = '"+ cruzid +"'"     # select the password with the entered cruzid from database
     mycursor.execute(sql)
@@ -240,7 +241,21 @@ def login():
     login_cruzid = request.forms.get('cruzid')               # get the cruzid from user entered
     login_password = request.forms.get('password')            # get the password from user entered
 
+
     mydb = connectDB()
+
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute(
+        "SELECT COUNT(*) from user where cruzid = '" + login_cruzid + "'")
+
+    result = mycursor.fetchone()
+    number_of_id = result[0]
+
+    if number_of_id == 0:
+        return template("login_wrong")
+
     mycursor = mydb.cursor()
     mycursor.execute(
         "select username from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
@@ -378,5 +393,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8101)
+run(reloader=True, host='localhost', port=8108)
 
