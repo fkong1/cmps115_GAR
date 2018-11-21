@@ -19,16 +19,16 @@
                         <input type="text"  name="username" class="form-control" id="username" placeholder={{logged_username}}>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="id">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="cruzid" class="form-control" id="formGroupExampleInput" placeholder="Cruz ID">
+                        <input type="text" name="cruzid" class="form-control" id="formGroupExa23" placeholder="New Password">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="studentid" class="form-control" id="formGroupExampleInput" placeholder="Studen ID">
+                        <input type="text" name="studentid" class="form-control" id="formGroupExa12" placeholder="Confirm Password">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="emailaddress" class="form-control" id="formGroupExampleInput" placeholder="Email Address">
+                        <input type="text" name="emailaddress" class="form-control" id="formGroup22t" placeholder="Email Address">
                     </div>
                 </div>
                 <div class="button_register">
