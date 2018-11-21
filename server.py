@@ -33,6 +33,13 @@ def index():
 def register():
     return template("register_temp")
 
+@get('/profile')
+def profile():
+    if logged_username == "":
+        return template('must_login')
+    else:
+        return template("pa_request",logged_username=logged_username)
+
 @get('/find-password')
 def register():
     return template("findPW_temp")
@@ -248,7 +255,7 @@ def login():
     mycursor = mydb.cursor()
 
     mycursor.execute(
-        "SELECT COUNT(*) from user where cruzid = '" + login_cruzid + "'")
+        "SELECT COUNT(*) from user where cruzid = '" + login_cruzid + "'")  #
 
     result = mycursor.fetchone()
     number_of_id = result[0]
@@ -279,6 +286,24 @@ def login():
 
 @post('/register')
 def register():
+    register_username = request.forms.get('username')           # get the username from user entered
+    register_password = request.forms.get('password')           # get the password from user entered
+    register_cruzid = request.forms.get('cruzid')               # get the cruzid from user entered
+    register_studentid = request.forms.get('studentid')         # get the studentid from user entered
+    register_emailaddress = request.forms.get('emailaddress')   # get the emailaddress from user entered
+
+    # user must enter something, go to the wrong warning page
+    if register_password == "" or register_username == "" or register_cruzid == "" or register_studentid == "" or register_emailaddress == "":
+        return template("register_wrong")
+    # if the cruzid and email have not been used, insert information and go to the succeed page
+    if register_connectDB(register_username,register_password,register_cruzid,register_studentid,register_emailaddress) == True:
+        return template("register_succeed")
+    # if the cruzid or email has been used, go to the used warning page
+    else:
+        return template("registe_used")
+
+@post('/edit_profile')
+def edit_register():
     register_username = request.forms.get('username')           # get the username from user entered
     register_password = request.forms.get('password')           # get the password from user entered
     register_cruzid = request.forms.get('cruzid')               # get the cruzid from user entered
@@ -393,5 +418,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8108)
+run(reloader=True, host='localhost', port=8111)
 
