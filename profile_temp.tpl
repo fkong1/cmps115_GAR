@@ -16,19 +16,24 @@
             <form action="/edit_profile" method="post">
                 <div class="register_form_container">
                     <div class="form-group">
-                        <input type="text"  name="username" class="form-control" id="username" placeholder={{logged_username}}>
+                        <span class="prepend30 text_size_16" id="basic-addon1">User Name</span>
+                        <input type="text"  name="username" class="append70" id="username" placeholder={{logged_username}}>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="id">
+                        <span class="prepend30 text_size_16" id="basic-addon2">User Name</span>
+                        <input type="password" name="password" class="append70" id="password" placeholder="id">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="cruzid" class="form-control" id="formGroupExa23" placeholder="New Password">
+                        <span class="prepend30 text_size_16" id="basic-addon3">User Name</span>
+                        <input type="text" name="cruzid" class="append70" id="formGroupExa23" placeholder="New Password">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="studentid" class="form-control" id="formGroupExa12" placeholder="Confirm Password">
+                        <span class="prepend30 text_size_16" id="basic-addon4">User Name</span>
+                        <input type="text" name="studentid" class="append70" id="formGroupExa12" placeholder="Confirm Password">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="emailaddress" class="form-control" id="formGroup22t" placeholder="Email Address">
+                        <span class="prepend30 text_size_16" id="basic-addon5">User Name</span>
+                        <input type="text" name="emailaddress" class="append70" id="formGroup22t" placeholder="Email Address">
                     </div>
                 </div>
                 <div class="button_register">

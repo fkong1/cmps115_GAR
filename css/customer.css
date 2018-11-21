@@ -53,6 +53,18 @@ a.alert-link:visited {
 	padding-top: 10%;
 }
 
+.prepend30 {
+	float: left;
+	width: 30%;
+}
+
+.append70 {
+	float: right;
+	width: 70%;
+}
+
+
+
 .main_link_1 {
 	float: left;
 }
@@ -67,6 +79,8 @@ a.alert-link:visited {
 	font-size: 30px;
 	margin-bottom: 30px;
 }
+
+
 
 .submit_button {
 	float: left;
@@ -251,6 +265,12 @@ button.bg-dark:focus {
 	padding-right: 10px;
 	padding-top: 10px;
 	font-size: 18px;
+}
+
+.text_size_16{
+	font-size: 16px;
+	height: 29px;
+
 }
 
 .newrider_row_container_input {
