@@ -48,8 +48,10 @@ def main():
     if logged_username == "":
         return template('must_login')
     else:
-        main_DB(logged_user_id)
-        return template("main_temp",logged_username=logged_username)
+        request_result = main_DB(logged_user_id)
+        print ('main front page:' + str(logged_user_id))
+
+        return template("main_temp",logged_username=logged_username,request_result=request_result)
 
 @get('/pa_request')
 def pa_request():
@@ -133,17 +135,28 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress):
     return True
 
 def main_DB(logged_user_id):
-    print("function main_DB: "+str(logged_user_id))
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select ride_type, start_time, end_time, starting_point,destination,userid,request_type,request_id from new_ride"
+    print("sql: "+str(sql))
+    mycursor.execute(sql)
+    myresult = mycursor.fetchall()
+    print("function main_DB: "+str(logged_user_id)+str(myresult))
+    mydb.close()
+    return myresult
 
 def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5):
     mydb = connectDB()
     mycursor = mydb.cursor()
     sql = "INSERT INTO repeat_request (monday, tuesday,wednesday,thursday,friday) values(%s, %s, %s, %s, %s)"
     val = (ck_1,ck_2,ck_3,ck_4,ck_5)
+    print("sql"+str(sql))
+    print("sql" + str(val))
     mycursor.execute(sql, val)
     mydb.commit()
 
     sql = "select repeat_request_id from repeat_request  order by repeat_request_id desc limit 1"
+    print("sql" + str(sql))
     mycursor.execute(sql)
     myresult = mycursor.fetchone()  # let myresult equal the password we selected
     for x in myresult:
@@ -287,7 +300,7 @@ def new_request():
     input_end_time = request.forms.get('input_end_time')
     input_staring_point = request.forms.get('input_staring_point')
     input_destination = request.forms.get('input_destination')
-    repeat_request_id=0
+    repeat_request_id = 0
     ck_1 = request.forms.get('ck_1')
     ck_2 = request.forms.get('ck_2')
     ck_3 = request.forms.get('ck_3')
@@ -357,6 +370,12 @@ def password_succeed():
             return template("findPW_succeed")
     return template("findPW_wrong")     # if user enter wrong cruzid or email, go to the wrong warning page
 
+@post('/main_list')
+def main_list():
+    html_request_id = request.forms.get('html_type1')
+    print ("html_request_id:" + str(html_request_id))
+    return
+
 
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')
@@ -378,5 +397,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8101)
+run(reloader=True, host='localhost', port=8111)
 

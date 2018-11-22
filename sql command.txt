@@ -21,6 +21,7 @@ create database gar_database;
   `starting_point` VARCHAR(255) NOT NULL,
   `destination` VARCHAR(255) NOT NULL,
   `userid` INT NOT NULL,
+  `request_type` VARCHAR(45) NULL DEFAULT 'new',
   PRIMARY KEY (`request_id`));
 
   CREATE TABLE `gar_database`.`repeat_request` (
