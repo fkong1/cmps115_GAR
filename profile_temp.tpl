@@ -7,7 +7,7 @@
     <title>My profile</title>
 </head>
 
-<body class="p-3 mb-2 bg-dark text-white">
+<body class="p-3 mb-2 bg-dark text-white" onload="aotuFillFunction()">
         <div class="register_container">
             <div class ="login_logo">
                 <img src="/images/icons8-moleskine-64.png">
@@ -20,21 +20,22 @@
                         <input type="text"  name="username" class="append70" id="username" placeholder={{logged_username}}>
                     </div>
                     <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon2">User Name</span>
-                        <input type="password" name="password" class="append70" id="password" placeholder="id">
+                        <span class="prepend30 text_size_16" id="basic-addon2">CruzID</span>
+                        <input type="password" name="password" class="append70" id="myID" placeholder="id" readonly="readonly">
                     </div>
                     <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon3">User Name</span>
-                        <input type="text" name="cruzid" class="append70" id="formGroupExa23" placeholder="New Password">
+                        <span class="prepend30 text_size_16" id="basic-addon3">Password</span>
+                        <input type="text" name="cruzid" class="append70" id="password" placeholder="New Password">
                     </div>
                     <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon4">User Name</span>
-                        <input type="text" name="studentid" class="append70" id="formGroupExa12" placeholder="Confirm Password">
+                        <span class="prepend30 text_size_16" id="basic-addon4">Email</span>
+                        <input type="text" name="studentid" class="append70" id="emailOne" placeholder="Email Address">
                     </div>
                     <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon5">User Name</span>
-                        <input type="text" name="emailaddress" class="append70" id="formGroup22t" placeholder="Email Address">
+                        <span class="prepend30 text_size_16" id="basic-addon5">Confirm</span>
+                        <input type="text" name="emailaddress" class="append70" id="emailTwo" placeholder="Confirm Email Address">
                     </div>
+
                 </div>
                 <div class="button_register">
                     <div class="submit_button" >
@@ -46,4 +47,9 @@
                 </div>
             </form>
         </div>
+   <script>
+      function aotuFillFunction() {
+
+      }
+   </script>
 </body>
