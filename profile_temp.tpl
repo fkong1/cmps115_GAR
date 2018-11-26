@@ -15,34 +15,34 @@
             <div class="register_text">My profile</div>
             <form action="/edit_profile" method="post">
                 <div class="register_form_container">
-                    <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon1">User Name</span>
+                    <div class="form-group" id="profile_group_1">
+                        <span class="prepend30 text_size_16" id="profile_1">User Name</span>
                         <input type="text"  name="username" class="append70" id="username" placeholder={{logged_username}} readonly>
                     </div>
-                    <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon2">CruzID</span>
+                    <div class="form-group" id="profile_group_2">
+                        <span class="prepend30 text_size_16" id="profile_2">CruzID</span>
                         <input type="text" name="cruzid1" class="append70" id="cruzid" placeholder="{{logged_cruzid}}" readonly>
                     </div>
-                    <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon2">Confirm</span>
-                        <input type="text" name="cruzid2" class="append70" id="cruzid" placeholder="{{logged_cruzid}}">
-                    </div>
-                    <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon3">Password</span>
+                    <div class="form-group" id="profile_group_3">
+                        <span class="prepend30 text_size_16" id="profile_3">Password</span>
                         <input type="text" name="password" class="append70" id="password" placeholder="{{logged_password}}">
                     </div>
-                    <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon4">Email</span>
+                    <div class="form-group" id="profile_group_4">
+                        <span class="prepend30 text_size_16" id="profile_4">Confirm</span>
+                        <input type="text" name="password" class="append70" id="password" placeholder="{{logged_password}}">
+                    </div>
+                    <div class="form-group" id="profile_group_5">
+                        <span class="prepend30 text_size_16" id="profile_5">Email</span>
                         <input type="text" name="semail1" class="append70" id="email1" placeholder="{{logged_email}}">
                     </div>
-                    <div class="form-group">
-                        <span class="prepend30 text_size_16" id="basic-addon5">Confirm</span>
+                    <div class="form-group" id="profile_group_6">
+                        <span class="prepend30 text_size_16" id="profile_6">Confirm</span>
                         <input type="text" name="email2" class="append70" id="email2" placeholder="{{logged_email}}">
                     </div>
                 </div>
                 <div class="button_register">
                     <div class="submit_button">
-                        <button type="submit" class="btn btn-info" style="width: 148px;">Submit</button>
+                        <button type="submit" class="btn btn-info" style="width: 148px;">Apply</button>
                     </div>
                     <div class="cancel_button">
                         <a href="/"><button type="button" class="btn btn-info" style="width: 148px;">Cancel</button></a>
