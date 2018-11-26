@@ -33,13 +33,6 @@ def index():
 def register():
     return template("register_temp")
 
-@get('/profile')
-def profile():
-    if logged_username == "":
-        return template('must_login')
-    else:
-        return template("profile_temp",logged_username=logged_username)
-
 @get('/find-password')
 def register():
     return template("findPW_temp")
@@ -48,6 +41,18 @@ def register():
 def findPW_back_main():
     return template('login_temp')
 
+@get('/profile')
+def profile():
+    if logged_username == "":
+        return template('must_login')
+    else:
+        logged_cruzid = findcruzID(logged_username)
+        logged_email = findEmail(logged_cruzid)
+        logged_password = findPassword(logged_email)
+
+        return template("profile_temp",logged_username=logged_username, logged_cruzid=logged_cruzid,
+                        logged_email=logged_email,logged_password=logged_password)
+
 @get('/main')
 def main():
     print("main logged_user_id: "+str(logged_user_id))
@@ -55,8 +60,10 @@ def main():
     if logged_username == "":
         return template('must_login')
     else:
-        main_DB(logged_user_id)
-        return template("main_temp",logged_username=logged_username)
+        request_result = main_DB(logged_user_id)
+        print ('main front page:' + str(logged_user_id))
+
+        return template("main_temp",logged_username=logged_username,request_result=request_result)
 
 @get('/pa_request')
 def pa_request():
@@ -85,7 +92,6 @@ def login_connectDB(status, cruzid, password,login_username):
     # check if the enter is empty
     if password == "" or cruzid == "":
         return False
-
     mycursor = mydb.cursor()
     sql = "select password,userid from user where cruzid = '"+ cruzid +"'"     # select the password with the entered cruzid from database
     mycursor.execute(sql)
@@ -141,17 +147,28 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress):
     return True
 
 def main_DB(logged_user_id):
-    print("function main_DB: "+str(logged_user_id))
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select ride_type, start_time, end_time, starting_point,destination,userid,request_type,request_id from new_ride"
+    print("sql: "+str(sql))
+    mycursor.execute(sql)
+    myresult = mycursor.fetchall()
+    print("function main_DB: "+str(logged_user_id)+str(myresult))
+    mydb.close()
+    return myresult
 
 def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5):
     mydb = connectDB()
     mycursor = mydb.cursor()
     sql = "INSERT INTO repeat_request (monday, tuesday,wednesday,thursday,friday) values(%s, %s, %s, %s, %s)"
     val = (ck_1,ck_2,ck_3,ck_4,ck_5)
+    print("sql"+str(sql))
+    print("sql" + str(val))
     mycursor.execute(sql, val)
     mydb.commit()
 
     sql = "select repeat_request_id from repeat_request  order by repeat_request_id desc limit 1"
+    print("sql" + str(sql))
     mycursor.execute(sql)
     myresult = mycursor.fetchone()  # let myresult equal the password we selected
     for x in myresult:
@@ -221,6 +238,18 @@ def findusername(email):
     myresult = mycursor.fetchone()
     return str(myresult[0])
 
+def findcruzID(logged_username):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select cruzid from user where username = '" + logged_username + "'"   # select the username under the given email
+    mycursor.execute(sql)
+    myresult = mycursor.fetchone()
+    return str(myresult[0])
+
+
+
+
+
 # sent the password to the user's email
 def sentmassage(email,password):
     usern = findusername(email)     # get username
@@ -248,21 +277,7 @@ def login():
     login_cruzid = request.forms.get('cruzid')               # get the cruzid from user entered
     login_password = request.forms.get('password')            # get the password from user entered
 
-
     mydb = connectDB()
-
-
-    mycursor = mydb.cursor()
-
-    mycursor.execute(
-        "SELECT COUNT(*) from user where cruzid = '" + login_cruzid + "'")  #
-
-    result = mycursor.fetchone()
-    number_of_id = result[0]
-
-    if number_of_id == 0:
-        return template("login_wrong")
-
     mycursor = mydb.cursor()
     mycursor.execute(
         "select username from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
@@ -302,24 +317,6 @@ def register():
     else:
         return template("registe_used")
 
-@post('/edit_profile')
-def edit_register():
-    register_username = request.forms.get('username')           # get the username from user entered
-    register_password = request.forms.get('password')           # get the password from user entered
-    register_cruzid = request.forms.get('cruzid')               # get the cruzid from user entered
-    register_studentid = request.forms.get('studentid')         # get the studentid from user entered
-    register_emailaddress = request.forms.get('emailaddress')   # get the emailaddress from user entered
-
-    # user must enter something, go to the wrong warning page
-    if register_password == "" or register_username == "" or register_cruzid == "" or register_studentid == "" or register_emailaddress == "":
-        return template("register_wrong")
-    # if the cruzid and email have not been used, insert information and go to the succeed page
-    if register_connectDB(register_username,register_password,register_cruzid,register_studentid,register_emailaddress) == True:
-        return template("register_succeed")
-    # if the cruzid or email has been used, go to the used warning page
-    else:
-        return template("registe_used")
-
 @post('/new_request')
 def new_request():
     ride_status = request.forms.get('ride_status')
@@ -327,7 +324,7 @@ def new_request():
     input_end_time = request.forms.get('input_end_time')
     input_staring_point = request.forms.get('input_staring_point')
     input_destination = request.forms.get('input_destination')
-    repeat_request_id=0
+    repeat_request_id = 0
     ck_1 = request.forms.get('ck_1')
     ck_2 = request.forms.get('ck_2')
     ck_3 = request.forms.get('ck_3')
@@ -397,6 +394,12 @@ def password_succeed():
             return template("findPW_succeed")
     return template("findPW_wrong")     # if user enter wrong cruzid or email, go to the wrong warning page
 
+@post('/main_list')
+def main_list():
+    html_request_id = request.forms.get('html_type1')
+    print ("html_request_id:" + str(html_request_id))
+    return
+
 
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')
@@ -418,5 +421,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8118)
+run(reloader=True, host='localhost', port=8121)
 
