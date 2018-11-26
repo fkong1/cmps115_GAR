@@ -388,3 +388,65 @@ body {
 	font-size: 13px;
 	font-weight: 300;
 }
+.profile_container {
+	float: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+	height: 800px;
+	padding-top: 10%;
+	background-color: #343a40;
+
+}
+.profile_left_container {
+	float: left;
+	width: 60%;
+	height: 800px;
+	background-color: #ffc107;
+}
+.profile_right_container {
+	float: right;
+	width: 40%;
+	height: 800px;
+	background-color: #6f42c1;
+}
+
+.profile_left_box {
+	float:left;
+}
+.profile_right_box {
+
+}
+.profile_text {
+	text-align: left;
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+/*12345678765432*/
+#prod_container {
+     position:absolute;
+     top:375px;
+     left:100px;
+     font-size:10pt;
+     width:600px;
+
+}
+
+#prod_container ul{
+float:left;
+list-style:none;
+padding:20px 5px 20px 100px;
+}
+
+#prod_container li{
+padding-bottom:5px;
+}
+
+
+input.radio_prod{
+width:10px;
+height:10px;
+}
+
