@@ -10,7 +10,7 @@
 <body class="p-3 mb-2 bg-dark text-white">
         <div class="register_container">
             <div class ="login_logo">
-                <img src="/images/icons8-moleskine-64.png">
+                <img src="/images/icons8-edit-64.png">
             </div>
             <div class="register_text">My profile</div>
             <form action="/edit_profile" method="post">
