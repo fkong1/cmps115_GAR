@@ -220,6 +220,22 @@ def findEmail(cruzid):
     myresult = mycursor.fetchone()
     return myresult[0]
 
+# check if password and email match the original data
+def able_to_update(cruzid, password1, password2, email1, email2):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select emailaddress from user where cruzid = '" + cruzid + "'"
+
+
+
+
+    return True
+
+
+
+
+
+
 # find the password with the entered email
 def findPassword(email):
     mydb = connectDB()
@@ -278,6 +294,13 @@ def login():
     login_password = request.forms.get('password')            # get the password from user entered
 
     mydb = connectDB()
+    mycursor = mydb.cursor()
+    mycursor.execute(
+        "select COUNT(*) from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
+    result = mycursor.fetchall()
+    the_num = result[0]
+    if the_num==0:
+        return template("login_wrong")
     mycursor = mydb.cursor()
     mycursor.execute(
         "select username from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
@@ -400,6 +423,23 @@ def main_list():
     print ("html_request_id:" + str(html_request_id))
     return
 
+@post('/edit_profile')
+def edit_profile():
+    user_cruzid = request.forms.get('cruzid')
+    user_password1 = request.forms.get('password1')
+    user_password2 = request.forms.get('password2')
+    user_email1 = request.forms.get('emailaddress1')
+    user_email2 = request.forms.get('emailaddress2')
+
+#    if able_to_update(user_cruzid, user_password1, user_password2, user_email1, user_email2) == True:
+
+
+
+    return template("findPW_wrong")
+
+
+
+
 
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')
@@ -421,5 +461,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8121)
+run(reloader=True, host='localhost', port=8124)
 
