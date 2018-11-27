@@ -193,6 +193,14 @@ a.alert-link:visited {
 .login_btn_width {
 	width: 300px;
 }
+.add_btn_width{
+	font-weight: bold;
+	color: #fff;
+	background-color: orange;
+	border-color: orange;
+	width: 150px;
+	margin-bottom: 10px;
+}
 
 .p-3 {
 	padding: 1rem !important;

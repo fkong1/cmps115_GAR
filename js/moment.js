@@ -426,7 +426,7 @@
 
     var defaultLongDateFormat = {
         LTS  : 'h:mm:ss A',
-        LT   : 'h:mm A',
+        LT   : 'hh:mm A',
         L    : 'MM/DD/YYYY',
         LL   : 'MMMM D, YYYY',
         LLL  : 'MMMM D, YYYY h:mm A',
