@@ -5,7 +5,6 @@
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/js/customer.js"></script>
-  <script type="text/javascript" src="/js/require.js"></script>
   <link rel="shortcut icon" href="images/icons8_cab_stand_50_fDM_icon.ico" type="image/x-icon" />
   <title>Main</title>
 </head>
@@ -45,7 +44,7 @@
       </thead>
 
       <tbody>
-
+      <%import datetime%>
           <% i = 1%>
           <%fruits = request_result%>
           <%for x in fruits:%>
@@ -60,9 +59,12 @@
               <td id = "html_destination_id{{i-1}}" name = "html_destination{{i-1}}">{{ x[4] }}</td>
               <td><button type ="button" class="btn btn-outline-info main_btn_width" >View</button></td>
               <td name = "html_request_id{{i-1}}">{{ x[7] }}</td>
-              <% if x[6]=="new": %>
+              <% currentDT = datetime.datetime.now()%>
+                <% if currentDT.strftime("%m/%d/%Y %I:%M %p") > x[2]: %>
+                <td><button type ="button" class="btn btn-secondary main_btn_width1" id="expired">expired</button></td>
+              <% elif x[6]=="new": %>
               <td><button type ="button" class="btn btn-info main_btn_width1" id="accept">accept</button></td>
-              <% if x[6]!="new": %>
+              <% elif x[6]!="new": %>
               <td><button type ="button" class="btn btn-secondary main_btn_width" >accepted</button></td>
               <% endif %>
             </tr>
