@@ -21,6 +21,9 @@
             // var aaa = 'html_type_id' + 1;
             // var tdobj = document.getElementById(aaa);
             // alert(tdobj.innerText);
+
+            connedtDB();
+            /*
             alert($(this).parent("td").parent("tr").find("td").eq(0).text());
             alert($(this).parent("td").parent("tr").find("td").eq(1).text());
             alert($(this).parent("td").parent("tr").find("td").eq(2).text());
@@ -28,7 +31,21 @@
             alert($(this).parent("td").parent("tr").find("td").eq(4).text());
             alert($(this).parent("td").parent("tr").find("td").eq(5).text());
             alert($(this).parent("td").parent("tr").find("td").eq(6).text());
-            alert(this.id);
+            alert(this.id);*/
     });
 });
+
+    function connedtDB() {
+        var mysql = require("mysql");
+        var con = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "mypassword"
+        });
+        con.connect(function(err) {
+            if (err) throw err;
+            console.log("Connected!");
+        });
+    }
+
 

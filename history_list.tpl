@@ -5,10 +5,12 @@
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/js/customer.js"></script>
+  <script type="text/javascript" src="/js/require.js"></script>
   <link rel="shortcut icon" href="images/icons8_cab_stand_50_fDM_icon.ico" type="image/x-icon" />
   <title>Main</title>
 </head>
 <body class="p-3 mb-2 bg-dark text-white">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse text_to_right" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -27,10 +29,12 @@
     </ul>
   </div>
 </nav>
-
-    <div class ="login_text"><img src="images/icons8-request-service-64.png">Request List</div>
-    <table class="table">
-      <thead class="thead-dark">
+<div class ="login_text"><img src="images/icons8-request-service-64.png">Request History List</div>
+<div class="button_add_ride">
+    <a href="pa_request"><button type ="submit" class="btn add_btn_width">Add New Ride</button></a>
+</div>
+<table class="table">
+    <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Type</th>
@@ -41,11 +45,11 @@
           <th scope="col">Detail</th>
           <th scope="col">Status</th>
         </tr>
-      </thead>
+    </thead>
 
-      <tbody>
-      <%import datetime%>
-          <% i = 1%>
+    <tbody>
+    <%import datetime%>
+    <% i = 1%>
           <%fruits = request_result%>
           <%for x in fruits:%>
 
@@ -55,11 +59,12 @@
               <td id = "html_type_id{{i-1}}"name ="html_type{{i-1}}">{{ x[0] }}</td>
               <td id = "html_start_time_id{{i-1}}" name ="html_start_time{{i-1}}">{{ x[1] }}</td>
               <td id = "html_end_time_id{{i-1}}" name ="html_end_time{{i-1}}">{{ x[2] }}</td>
+
               <td id = "html_start_point_id{{i-1}}" name = "html_start_point{{i-1}}">{{ x[3] }}</td>
               <td id = "html_destination_id{{i-1}}" name = "html_destination{{i-1}}">{{ x[4] }}</td>
               <td><button type ="button" class="btn btn-outline-info main_btn_width" >View</button></td>
               <td name = "html_request_id{{i-1}}">{{ x[7] }}</td>
-              <% currentDT = datetime.datetime.now()%>
+                <% currentDT = datetime.datetime.now()%>
                 <% if currentDT.strftime("%m/%d/%Y %I:%M %p") > x[2]: %>
                 <td><button type ="button" class="btn btn-secondary main_btn_width1" id="expired">expired</button></td>
               <% elif x[6]=="new": %>
@@ -69,6 +74,7 @@
               <% endif %>
             </tr>
               <%endfor%>
-      </tbody>
-    </table>
+    </tbody>
+</table>
+
 </body>

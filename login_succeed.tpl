@@ -16,7 +16,7 @@
         <meta http-equiv="Refresh" content="2;main">
       <% end %>
       <% if login_status == 'Passenger': %>
-        <meta http-equiv="Refresh" content="2;pa_request">
+        <meta http-equiv="Refresh" content="2;history">
       <% end %>
    </div>
 </body>

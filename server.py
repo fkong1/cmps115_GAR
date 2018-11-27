@@ -65,6 +65,18 @@ def main():
 
         return template("main_temp",logged_username=logged_username,request_result=request_result)
 
+@get('/history')
+def history():
+    print("main logged_user_id: "+str(logged_user_id))
+    print("main logged_username: "+str(logged_username))
+    if logged_username == "":
+        return template('must_login')
+    else:
+        request_result = history_DB(logged_user_id)
+        print ('main front page:' + str(logged_user_id))
+
+        return template("history_list",logged_username=logged_username,request_result=request_result)
+
 @get('/pa_request')
 def pa_request():
     if logged_username == "":
@@ -154,6 +166,17 @@ def main_DB(logged_user_id):
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
     print("function main_DB: "+str(logged_user_id)+str(myresult))
+    mydb.close()
+    return myresult
+
+def history_DB(logged_user_id):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select ride_type, start_time, end_time, starting_point,destination,userid,request_type,request_id from new_ride where userid = '" + str(logged_user_id) + "'"
+    print("sql: "+str(sql))
+    mycursor.execute(sql)
+    myresult = mycursor.fetchall()
+    print("function history_DB: "+str(logged_user_id)+str(myresult))
     mydb.close()
     return myresult
 
@@ -461,5 +484,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8124)
+run(reloader=True, host='localhost', port=8111)
+
 
