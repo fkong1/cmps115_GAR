@@ -244,12 +244,25 @@ def findEmail(cruzid):
     return myresult[0]
 
 # check if password and email match the original data
-def able_to_update(cruzid, password1, password2, email1, email2):
+def able_to_update(login_cruzid, password1, password2, email1, email2):
     mydb = connectDB()
     mycursor = mydb.cursor()
-    sql = "select emailaddress from user where cruzid = '" + cruzid + "'"
+    mycursor.execute(
+        "select COUNT(*) from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
+    result = mycursor.fetchall()
+    the_num = result[0]
+    if the_num==0:
+        return False
 
 
+    mycursor = mydb.cursor()
+    sql = "select * from user where cruzid = '" + login_cruzid + "'" #select whole row in the table by cruzID match
+    mycursor.execute(sql)
+    myresult = mycursor.fetchall()
+    password1
+
+    if myresult[1] == password1:
+        pm = True
 
 
     return True
