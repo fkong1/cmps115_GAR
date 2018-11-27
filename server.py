@@ -244,25 +244,13 @@ def findEmail(cruzid):
     return myresult[0]
 
 # check if password and email match the original data
-def able_to_update(login_cruzid, password1, password2, email1, email2):
-    mydb = connectDB()
-    mycursor = mydb.cursor()
-    mycursor.execute(
-        "select COUNT(*) from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
-    result = mycursor.fetchall()
-    the_num = result[0]
-    if the_num==0:
-        return False
+def able_to_update( password1, password2, email1, email2):
 
 
-    mycursor = mydb.cursor()
-    sql = "select * from user where cruzid = '" + login_cruzid + "'" #select whole row in the table by cruzID match
-    mycursor.execute(sql)
-    myresult = mycursor.fetchall()
-    password1
 
-    if myresult[1] == password1:
-        pm = True
+
+
+
 
 
     return True
@@ -461,17 +449,21 @@ def main_list():
 
 @post('/edit_profile')
 def edit_profile():
-    user_cruzid = request.forms.get('cruzid')
     user_password1 = request.forms.get('password1')
     user_password2 = request.forms.get('password2')
     user_email1 = request.forms.get('emailaddress1')
     user_email2 = request.forms.get('emailaddress2')
 
-#    if able_to_update(user_cruzid, user_password1, user_password2, user_email1, user_email2) == True:
+    if user_password1 == '' and user_email1 =='':
+        print "nothing change"
+
+
+    if able_to_update( user_password1, user_password2, user_email1, user_email2) == True:
+        print 'hello update'
 
 
 
-    return template("findPW_wrong")
+    return template("Profile_nothing")
 
 
 
@@ -497,6 +489,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8111)
+run(reloader=True, host='localhost', port=8116)
 
 

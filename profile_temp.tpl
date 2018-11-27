@@ -21,23 +21,23 @@
                     </div>
                     <div class="form-group" id="profile_group_2">
                         <span class="prepend30 text_size_16" id="profile_2">CruzID</span>
-                        <input type="text" name="cruzid1" class="append70" id="cruzid" placeholder="{{logged_cruzid}}" readonly>
+                        <input type="text" name="cruzid" class="append70" id="profile_cruzid" placeholder="{{logged_cruzid}}" readonly>
                     </div>
                     <div class="form-group" id="profile_group_3">
                         <span class="prepend30 text_size_16" id="profile_3">Password</span>
-                        <input type="text" name="password" class="append70" id="password" placeholder="{{logged_password}}">
+                        <input type="password" name="password1" class="append70" id="profile_password1" placeholder="******">
                     </div>
                     <div class="form-group" id="profile_group_4">
                         <span class="prepend30 text_size_16" id="profile_4">Confirm</span>
-                        <input type="text" name="password" class="append70" id="password" placeholder="{{logged_password}}">
+                        <input type="password" name="password2" class="append70" id="profile_assword2" placeholder="******">
                     </div>
                     <div class="form-group" id="profile_group_5">
                         <span class="prepend30 text_size_16" id="profile_5">Email</span>
-                        <input type="text" name="semail1" class="append70" id="email1" placeholder="{{logged_email}}">
+                        <input type="text" name="emailaddress1" class="append70" id="profile_email1" placeholder="{{logged_email}}">
                     </div>
                     <div class="form-group" id="profile_group_6">
                         <span class="prepend30 text_size_16" id="profile_6">Confirm</span>
-                        <input type="text" name="email2" class="append70" id="email2" placeholder="{{logged_email}}">
+                        <input type="text" name="emailaddress2" class="append70" id="profile_email2" placeholder="{{logged_email}}">
                     </div>
                 </div>
                 <div class="button_register">
