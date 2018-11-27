@@ -50,6 +50,7 @@ def profile():
         logged_email = findEmail(logged_cruzid)
         logged_password = findPassword(logged_email)
 
+
         return template("profile_temp",logged_username=logged_username, logged_cruzid=logged_cruzid,
                         logged_email=logged_email,logged_password=logged_password)
 
@@ -244,26 +245,23 @@ def findEmail(cruzid):
     return myresult[0]
 
 # check if password and email match the original data
-def able_to_update( user_cruzid, password1, password2, email1, email2):
-    print("cruzID: " + str(user_cruzid))
-    # if (password1 is not None) and (password1 == password2) :
+def able_to_update( logged_username, password1, email1):
 
-    # mydb = connectDB()
-    # mycursor = mydb.cursor()
-    # sql = "select emailaddress from user where cruzid = '" + cruzid + "'"   # select the email under the given cruzid
-    # mycursor.execute(sql)
-    # myresult = mycursor.fetchone()
+    print ("password1 is: " + str(password1))
+    print ("email1 is: " + str(email1))
+    mydb = connectDB()
+    mycursor = mydb.cursor()
 
-    # print("myreult[0]: " + str(myreult[0]))
-
-
-
-
+    if password1 != "":
+        sql = "UPDATE user SET password = '" + password1 + "' WHERE username = '" + logged_username + "'"
+        mycursor.execute(sql)
+        mydb.commit()
+    if email1 != "":
+        sql = "UPDATE user SET emailaddress = '" + email1 + "' WHERE username = '" + logged_username + "'"
+        mycursor.execute(sql)
+        mydb.commit()
+    mydb.close()
     return True
-
-
-
-
 
 
 # find the password with the entered email
@@ -455,26 +453,24 @@ def main_list():
 
 @post('/edit_profile')
 def edit_profile():
+    print("the name is :" + str(logged_username))
 
-    user_cruzid = request.forms.get('logged_cruzid')
-    print ("CruzID is: " + str(user_cruzid))
     user_password1 = request.forms.get('password1')
     user_password2 = request.forms.get('password2')
     user_email1 = request.forms.get('emailaddress1')
     user_email2 = request.forms.get('emailaddress2')
 
     if user_password1 == '' and user_email1 =='' :
-        print "nothing change"
         return template("Profile_nothing")
 
+    if user_password1 != user_password2 or user_email1 != user_email2:
+        return template("Profile_not_match")
 
-    if able_to_update( user_cruzid, user_password1, user_password2, user_email1, user_email2) == True:
+    if able_to_update(logged_username, user_password1, user_email1) == True:
         print 'hello update'
-        return template("Profile_succeed")
-
-    return template("Profile_not_match")
 
 
+    return template("Profile_succeed")
 
 
 # Let's add some code to serve jpg images from our static images directory.
@@ -497,6 +493,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8121)
+run(reloader=True, host='localhost', port=8123)
 
 
