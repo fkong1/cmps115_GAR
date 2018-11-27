@@ -41,6 +41,18 @@ def register():
 def findPW_back_main():
     return template('login_temp')
 
+@get('/profile')
+def profile():
+    if logged_username == "":
+        return template('must_login')
+    else:
+        logged_cruzid = findcruzID(logged_username)
+        logged_email = findEmail(logged_cruzid)
+        logged_password = findPassword(logged_email)
+
+        return template("profile_temp",logged_username=logged_username, logged_cruzid=logged_cruzid,
+                        logged_email=logged_email,logged_password=logged_password)
+
 @get('/main')
 def main():
     print("main logged_user_id: "+str(logged_user_id))
@@ -249,6 +261,18 @@ def findusername(email):
     myresult = mycursor.fetchone()
     return str(myresult[0])
 
+def findcruzID(logged_username):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select cruzid from user where username = '" + logged_username + "'"   # select the username under the given email
+    mycursor.execute(sql)
+    myresult = mycursor.fetchone()
+    return str(myresult[0])
+
+
+
+
+
 # sent the password to the user's email
 def sentmassage(email,password):
     usern = findusername(email)     # get username
@@ -268,18 +292,6 @@ def sentmassage(email,password):
 
     server.quit()
 
-import logging
-def changeAccept(id):
-    mydb = connectDB()
-    mycursor = mydb.cursor()
-    sql = "UPDATE new_ride SET request_type = 'accepted' WHERE request_id = id"
-    mycursor.execute(sql)
-
-    mydb.commit()
-    print "here"
-    #logging(id);
-
-
 ############################################ connect UI page to MySQL database ############################################
 
 @post('/login')
@@ -287,7 +299,7 @@ def login():
     login_status = request.forms.get('login_status')        # get the identity from user entered
     login_cruzid = request.forms.get('cruzid')               # get the cruzid from user entered
     login_password = request.forms.get('password')            # get the password from user entered
-    login_username = ""
+
     mydb = connectDB()
     mycursor = mydb.cursor()
     mycursor.execute(
@@ -301,14 +313,14 @@ def login():
     print("login_cruzid: " + str(login_cruzid))
     print("login_password: " + str(login_password))
     # if enter wrong or noting, then can't login, go to the login wrong warning page
-    if login_connectDB(login_status, login_cruzid,login_password,login_username)== False or login_cruzid =="" or login_password =="":
+    if login_connectDB(login_status, login_cruzid,login_password,login_username)== False:
         return template("login_wrong")
     # if cruzid and password are correct, go to the succeed page, then go to main page
     else:
         # if passenger return passenger page
         # if driver return driver page
         print ("logged_user_id: " + str(logged_user_id))
-        return template("login_succeed", login_status=login_status)
+        return template("login_succeed", login_status=login_status, login_username = login_username)
 
 @post('/register')
 def register():
@@ -432,5 +444,5 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=9002)
+run(reloader=True, host='localhost', port=8111)
 
