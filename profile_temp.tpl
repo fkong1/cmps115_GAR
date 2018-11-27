@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group" id="profile_group_2">
                         <span class="prepend30 text_size_16" id="profile_2">CruzID</span>
-                        <input type="text" name="cruzid" class="append70" id="profile_cruzid" placeholder="{{logged_cruzid}}" readonly>
+                        <input type="text" name = logged_cruzid  class="append70" id="profile_cruzid" placeholder="{{logged_cruzid}}" readonly>
                     </div>
                     <div class="form-group" id="profile_group_3">
                         <span class="prepend30 text_size_16" id="profile_3">Password</span>
@@ -51,3 +51,5 @@
             </form>
         </div>
 </body>
+
+

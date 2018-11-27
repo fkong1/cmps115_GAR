@@ -244,11 +244,17 @@ def findEmail(cruzid):
     return myresult[0]
 
 # check if password and email match the original data
-def able_to_update( password1, password2, email1, email2):
+def able_to_update( user_cruzid, password1, password2, email1, email2):
+    print("cruzID: " + str(user_cruzid))
+    # if (password1 is not None) and (password1 == password2) :
 
+    # mydb = connectDB()
+    # mycursor = mydb.cursor()
+    # sql = "select emailaddress from user where cruzid = '" + cruzid + "'"   # select the email under the given cruzid
+    # mycursor.execute(sql)
+    # myresult = mycursor.fetchone()
 
-
-
+    # print("myreult[0]: " + str(myreult[0]))
 
 
 
@@ -449,22 +455,24 @@ def main_list():
 
 @post('/edit_profile')
 def edit_profile():
+
+    user_cruzid = request.forms.get('logged_cruzid')
+    print ("CruzID is: " + str(user_cruzid))
     user_password1 = request.forms.get('password1')
     user_password2 = request.forms.get('password2')
     user_email1 = request.forms.get('emailaddress1')
     user_email2 = request.forms.get('emailaddress2')
 
-    if user_password1 == '' and user_email1 =='':
+    if user_password1 == '' and user_email1 =='' :
         print "nothing change"
+        return template("Profile_nothing")
 
 
-    if able_to_update( user_password1, user_password2, user_email1, user_email2) == True:
+    if able_to_update( user_cruzid, user_password1, user_password2, user_email1, user_email2) == True:
         print 'hello update'
+        return template("Profile_succeed")
 
-
-
-    return template("Profile_nothing")
-
+    return template("Profile_not_match")
 
 
 
@@ -489,6 +497,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8116)
+run(reloader=True, host='localhost', port=8121)
 
 
