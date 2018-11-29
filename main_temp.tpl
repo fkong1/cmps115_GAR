@@ -29,8 +29,6 @@
 </nav>
 
     <div class ="login_text"><img src="images/icons8-request-service-64.png">Request List</div>
-
-
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -46,13 +44,25 @@
 
       <tbody>
       <%import datetime%>
+      <%import mysql.connector, smtplib, json%>
+
+      <%mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        passwd="password",
+        database="gar_database")%>
+      <%mycursor = mydb.cursor()%>
+      <%sql = "select userid from user where username = '"+ logged_username +"'"%>
+      <%mycursor.execute(sql)%>
+      <%myresult = mycursor.fetchall()%>
           <% i = 1%>
           <%fruits = request_result%>
           <%for x in fruits:%>
-
             <tr>
+              <%if myresult[0][0] != x[5]: %>
               <th scope="row">{{i}}</th>
               <%i+=1%>
+
               <td id = "html_type_id{{i-1}}"name ="html_type{{i-1}}">{{ x[0] }}</td>
               <td id = "html_start_time_id{{i-1}}" name ="html_start_time{{i-1}}">{{ x[1] }}</td>
               <td id = "html_end_time_id{{i-1}}" name ="html_end_time{{i-1}}">{{ x[2] }}</td>
@@ -60,12 +70,22 @@
               <td id = "html_destination_id{{i-1}}" name = "html_destination{{i-1}}">{{ x[4] }}</td>
               <td name = "html_request_id{{i-1}}" style="display: none;">{{ x[7] }}</td>
               <% currentDT = datetime.datetime.now()%>
+
               <% if currentDT.strftime("%m/%d/%Y %I:%M %p") > x[2]: %>
                 <td><button type ="button" class="btn btn-secondary main_btn_width1" id="expired" disabled>expired</button></td>
               <% elif x[6]=="new": %>
               <td><button type ="button" class="btn btn-info main_btn_width1" id="accept">accept</button></td>
-              <% elif x[6]!="new": %>
-              <td><button type ="button" class="btn btn-secondary main_btn_width" style = "border-color: orange;background: orange;"disabled>accepted</button></td>
+
+              <% elif x[6]=="accepted": %>
+
+                <%if myresult[0][0] == x[8]:%>
+                <td><button type ="button" class="btn btn-info main_btn_width" style = "border-color: orange;background: orange;">cancel</button></td>
+                <%else:%>
+                <td><button type ="button" class="btn btn-info main_btn_width1" disabled>accepted</button></td>
+                <%end%>
+              <%elif x[6]=="cancel":%>
+                <td><button type ="button" class="btn btn-info main_btn_width2" disabled>canceled</button></td>
+              <% end %>
               <% end %>
             </tr>
       <%end%>

@@ -51,4 +51,49 @@
     });
 });
 
+    $(document).ready(function(){
+        $('.main_btn_width').click(function (event) {
+            // alert($(this).parent("td").parent("tr").find("td").eq(0).text());
+            // alert($(this).parent("td").parent("tr").find("td").eq(1).text());
+            // alert($(this).parent("td").parent("tr").find("td").eq(2).text());
+            // alert($(this).parent("td").parent("tr").find("td").eq(3).text());
+            // alert($(this).parent("td").parent("tr").find("td").eq(4).text());
+            // alert($(this).parent("td").parent("tr").find("td").eq(5).text());
+            //alert($(this).parent("td").parent("tr").find("td").eq(5).text());
+            // alert($(this).parent("td").parent("tr").find("td").eq(7).text());
+            // alert(this.id);
+            request_id_send = $(this).parent("td").parent("tr").find("td").eq(5).text();
+            $.ajax({
+            url: "/feedback_acc",
+            type: "POST",
+            data: JSON.stringify(request_id_send),
+            contentType: "application/json"
+            // success: function() {
+            //     alert("Feedback successfully stored in the server!");
+            // },
+            // error: function() {
+            //     alert("Feedback failed to store back in the server!");
+            // },
+            });
+
+        window.location.reload();
+    });
+});
+
+    $(document).ready(function(){
+        $('.main_btn_width2').click(function (event) {
+
+            request_id_send = $(this).parent("td").parent("tr").find("td").eq(5).text();
+            $.ajax({
+            url: "/feedback_req",
+            type: "POST",
+            data: JSON.stringify(request_id_send),
+            contentType: "application/json"
+
+            });
+
+        window.location.reload();
+    });
+});
+
 

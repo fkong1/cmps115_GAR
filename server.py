@@ -161,7 +161,7 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress):
 def main_DB(logged_user_id):
     mydb = connectDB()
     mycursor = mydb.cursor()
-    sql = "select ride_type, start_time, end_time, starting_point,destination,userid,request_type,request_id from new_ride"
+    sql = "select ride_type, start_time, end_time, starting_point,destination,userid,request_type,request_id, driverid from new_ride"
     print("sql: "+str(sql))
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
@@ -289,11 +289,56 @@ def findcruzID(logged_username):
     myresult = mycursor.fetchone()
     return str(myresult[0])
 
+def findEmailid(id):
+    # conect the database
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select emailaddress from user where userid = '" + str(id) + "'"   # select the email under the given cruzid
+    mycursor.execute(sql)
+    myresult = mycursor.fetchone()
+    return myresult[0]
+
+def findUserid(id):
+    # conect the database
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select userid from new_ride where request_id = '" + str(id) + "'"   # select the email under the given cruzid
+    mycursor.execute(sql)
+    myresult = mycursor.fetchone()
+    return myresult[0]
+
+def findDriverid(id):
+    # conect the database
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select driverid from new_ride where request_id = '" + id + "'"   # select the email under the given cruzid
+    mycursor.execute(sql)
+    myresult = mycursor.fetchone()
+    return myresult[0]
 
 def accepted_request(comments):
     mydb = connectDB()
     mycursor = mydb.cursor()
-    sql = "UPDATE new_ride SET request_type = 'accepted' WHERE request_id = '"+ comments +"'"
+    sql = "UPDATE new_ride SET request_type = 'accepted', driverid = '"+ str(logged_user_id) +"'WHERE request_id = '"+ comments +"'"
+    mycursor.execute(sql)
+    mydb.commit()
+    mydb.close()
+    return True
+
+
+def accepted_canceled(comments):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "UPDATE new_ride SET request_type = 'new', driverid = 0 WHERE request_id = '"+ comments +"'"
+    mycursor.execute(sql)
+    mydb.commit()
+    mydb.close()
+    return True
+
+def Request_canceled(comments):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "UPDATE new_ride SET request_type = 'cancel' WHERE request_id = '" + comments + "'"
     mycursor.execute(sql)
     mydb.commit()
     mydb.close()
@@ -318,6 +363,28 @@ def sentmassage(email,password):
 
     server.quit()
 
+def senddriver(id):
+    useri = findUserid(id)
+    drivi = findDriverid(id)
+    passemail = findEmailid(useri)
+    passusern = findusername(passemail)
+    drivemail = findEmailid(drivi)
+    drivusern = findusername(drivemail)     # get username
+    sender = "teamgar2018@gmail.com"    # server email
+    message = MIMEMultipart()
+    message['From'] = sender
+    message['To'] = drivemail
+    message['Subject'] = "Password Request (do not reply!)"
+    body = "Dear " + drivusern + ",\n" + "\nHere is your passenger information: \n\n" + "Username: " +str(passusern)+ "\nEmail        : " +str(passemail) + "\n\nThanks for choosing us!\n" + "Team GAR"
+
+    message.attach(MIMEText(body, 'plain'))
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(sender, "garpassword")
+    server.sendmail(sender, drivemail, message.as_string())
+
+    server.quit()
 ############################################ connect UI page to MySQL database ############################################
 
 @post('/login')
@@ -483,8 +550,21 @@ def feedback():
     print comments
     #accepted
     if accepted_request(comments) == True:
+        senddriver(comments)
         return comments
 
+@route('/feedback_acc', method='POST')
+def feedback_acc():
+    comments = request.json #request_id
+    print comments
+    if accepted_canceled(comments) == True:
+        return comments
+
+@route('/feedback_req', method='POST')
+def feedback_req():
+    comments = request.json #request_id
+    if Request_canceled(comments) == True:
+        return comments
 
 
 
@@ -508,6 +588,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8123)
+run(reloader=True, host='localhost', port=8001)
 
 
