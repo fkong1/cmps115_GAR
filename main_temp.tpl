@@ -29,6 +29,8 @@
 </nav>
 
     <div class ="login_text"><img src="images/icons8-request-service-64.png">Request List</div>
+
+
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -61,11 +63,11 @@
               <td name = "html_request_id{{i-1}}">{{ x[7] }}</td>
               <% currentDT = datetime.datetime.now()%>
                 <% if currentDT.strftime("%m/%d/%Y %I:%M %p") > x[2]: %>
-                <td><button type ="button" class="btn btn-secondary main_btn_width1" id="expired">expired</button></td>
+                <td><button type ="button" class="btn btn-secondary main_btn_width1" id="expired" disabled>expired</button></td>
               <% elif x[6]=="new": %>
               <td><button type ="button" class="btn btn-info main_btn_width1" id="accept">accept</button></td>
               <% elif x[6]!="new": %>
-              <td><button type ="button" class="btn btn-secondary main_btn_width" >accepted</button></td>
+              <td><button type ="button" class="btn btn-secondary main_btn_width" disabled>accepted</button></td>
               <% endif %>
             </tr>
               <%endfor%>

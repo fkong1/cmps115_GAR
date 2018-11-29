@@ -1,5 +1,4 @@
-import mysql.connector
-import smtplib
+import mysql.connector, smtplib, json
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from bottle import get, route, run, template, static_file, request, post
@@ -334,6 +333,7 @@ def login():
         "select username from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
     myresult = mycursor.fetchall()
 
+    login_username = ""
     for x in myresult:
         login_username = x[0]
 
@@ -471,6 +471,12 @@ def edit_profile():
 
 
     return template("Profile_succeed")
+
+@route('/feedback', method='POST')
+
+def feedback():
+    comments = request.json
+    print comments
 
 
 # Let's add some code to serve jpg images from our static images directory.
