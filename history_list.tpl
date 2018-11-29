@@ -68,7 +68,7 @@
                 <% if currentDT.strftime("%m/%d/%Y %I:%M %p") > x[2]: %>
                 <td><button type ="button" class="btn btn-secondary main_btn_width1" id="expired">expired</button></td>
               <% elif x[6]=="new": %>
-              <td><button type ="button" class="btn btn-info main_btn_width1" id="accept">accept</button></td>
+              <td><button type ="button" class="btn btn-info main_btn_width1" id="accept">cancel</button></td>
               <% elif x[6]!="new": %>
               <td><button type ="button" class="btn btn-secondary main_btn_width" >accepted</button></td>
               <% endif %>
