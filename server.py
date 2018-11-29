@@ -290,8 +290,14 @@ def findcruzID(logged_username):
     return str(myresult[0])
 
 
-
-
+def accepted_request(comments):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "UPDATE new_ride SET request_type = 'accepted' WHERE request_id = '"+ comments +"'"
+    mycursor.execute(sql)
+    mydb.commit()
+    mydb.close()
+    return True
 
 # sent the password to the user's email
 def sentmassage(email,password):
@@ -469,14 +475,17 @@ def edit_profile():
     if able_to_update(logged_username, user_password1, user_email1) == True:
         print 'hello update'
 
-
     return template("Profile_succeed")
 
 @route('/feedback', method='POST')
-
 def feedback():
-    comments = request.json
+    comments = request.json #request_id
     print comments
+    #accepted
+    if accepted_request(comments) == True:
+        return comments
+
+
 
 
 # Let's add some code to serve jpg images from our static images directory.
