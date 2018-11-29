@@ -3,6 +3,8 @@
    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
    <link href="/css/customer.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/customer.js"></script>
     <link rel="shortcut icon" href="images/icons8_cab_stand_50_fDM_icon.ico" type="image/x-icon" />
     <title>Sign In</title>
 </head>
@@ -28,16 +30,16 @@
                         <input type="password" name="password1" class="append70" id="profile_password1" placeholder="******">
                     </div>
                     <div class="form-group" id="profile_group_4">
-                        <span class="prepend30 text_size_16" id="profile_4">Confirm</span>
-                        <input type="password" name="password2" class="append70" id="profile_assword2" placeholder="******">
+                        <span class="prepend30 text_size_16" id="profile_4" style="display: none;">Confirm</span>
+                        <input type="password" name="password2" class="append70" id="profile_assword2" placeholder="******" style="display: none;">
                     </div>
                     <div class="form-group" id="profile_group_5">
                         <span class="prepend30 text_size_16" id="profile_5">Email</span>
                         <input type="text" name="emailaddress1" class="append70" id="profile_email1" placeholder="{{logged_email}}">
                     </div>
                     <div class="form-group" id="profile_group_6">
-                        <span class="prepend30 text_size_16" id="profile_6">Confirm</span>
-                        <input type="text" name="emailaddress2" class="append70" id="profile_email2" placeholder="{{logged_email}}">
+                        <span class="prepend30 text_size_16" id="profile_6" style="display: none;">Confirm</span>
+                        <input type="text" name="emailaddress2" class="append70" id="profile_email2" placeholder="{{logged_email}}" style="display: none;">
                     </div>
                 </div>
                 <div class="button_register">

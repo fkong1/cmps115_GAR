@@ -40,7 +40,6 @@
           <th scope="col">End Time</th>
           <th scope="col">Starting Point</th>
           <th scope="col">Destination</th>
-          <th scope="col">Detail</th>
           <th scope="col">Status</th>
         </tr>
       </thead>
@@ -59,18 +58,17 @@
               <td id = "html_end_time_id{{i-1}}" name ="html_end_time{{i-1}}">{{ x[2] }}</td>
               <td id = "html_start_point_id{{i-1}}" name = "html_start_point{{i-1}}">{{ x[3] }}</td>
               <td id = "html_destination_id{{i-1}}" name = "html_destination{{i-1}}">{{ x[4] }}</td>
-              <td><button type ="button" class="btn btn-outline-info main_btn_width" >View</button></td>
-              <td name = "html_request_id{{i-1}}">{{ x[7] }}</td>
+              <td name = "html_request_id{{i-1}}" style="display: none;">{{ x[7] }}</td>
               <% currentDT = datetime.datetime.now()%>
-                <% if currentDT.strftime("%m/%d/%Y %I:%M %p") > x[2]: %>
+              <% if currentDT.strftime("%m/%d/%Y %I:%M %p") > x[2]: %>
                 <td><button type ="button" class="btn btn-secondary main_btn_width1" id="expired" disabled>expired</button></td>
               <% elif x[6]=="new": %>
               <td><button type ="button" class="btn btn-info main_btn_width1" id="accept">accept</button></td>
               <% elif x[6]!="new": %>
-              <td><button type ="button" class="btn btn-secondary main_btn_width" disabled>accepted</button></td>
-              <% endif %>
+              <td><button type ="button" class="btn btn-secondary main_btn_width" style = "border-color: orange;background: orange;"disabled>accepted</button></td>
+              <% end %>
             </tr>
-              <%endfor%>
+      <%end%>
       </tbody>
     </table>
 </body>

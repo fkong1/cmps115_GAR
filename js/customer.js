@@ -1,4 +1,14 @@
    $(function () {
+       $("#profile_password1").click(function() {
+            $('#profile_4').show("slow");
+            $('#profile_assword2').show("slow");
+        });
+
+       $("#profile_email1").click(function() {
+            $('#profile_6').show("slow");
+            $('#profile_email2').show("slow");
+        });
+
        $('#datetimepicker1').datetimepicker();
        $('#datetimepicker2').datetimepicker();
        $('#rider_type_id').change(function() {
@@ -10,12 +20,8 @@
                  $('#riderType').show("slow");
             }
         });
-       $('#accept1').click(function() {
-            alert( "Handler for .click() called." );
-        });
-            
-
    });
+
     $(document).ready(function(){
         $('.main_btn_width1').click(function (event) {
             // alert($(this).parent("td").parent("tr").find("td").eq(0).text());
@@ -24,10 +30,10 @@
             // alert($(this).parent("td").parent("tr").find("td").eq(3).text());
             // alert($(this).parent("td").parent("tr").find("td").eq(4).text());
             // alert($(this).parent("td").parent("tr").find("td").eq(5).text());
-            alert($(this).parent("td").parent("tr").find("td").eq(6).text());
+            //alert($(this).parent("td").parent("tr").find("td").eq(5).text());
             // alert($(this).parent("td").parent("tr").find("td").eq(7).text());
             // alert(this.id);
-            request_id_send = $(this).parent("td").parent("tr").find("td").eq(6).text();
+            request_id_send = $(this).parent("td").parent("tr").find("td").eq(5).text();
             $.ajax({
             url: "/feedback",
             type: "POST",
@@ -39,10 +45,9 @@
             // error: function() {
             //     alert("Feedback failed to store back in the server!");
             // },
+            });
 
-});
-
-
+        window.location.reload();
     });
 });
 
