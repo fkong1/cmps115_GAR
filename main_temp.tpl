@@ -38,6 +38,7 @@
           <th scope="col">End Time</th>
           <th scope="col">Starting Point</th>
           <th scope="col">Destination</th>
+          <th scope="col">Passenger</th>
           <th scope="col">Status</th>
         </tr>
       </thead>
@@ -79,7 +80,7 @@
               <% elif x[6]=="accepted": %>
 
                 <%if myresult[0][0] == x[8]:%>
-                <td><button type ="button" class="btn btn-info main_btn_width" style = "border-color: orange;background: orange;">cancel</button></td>
+                <td><button type ="button" class="btn btn-info main_btn_width">cancel</button></td>
                 <%else:%>
                 <td><button type ="button" class="btn btn-info main_btn_width1" disabled>accepted</button></td>
                 <%end%>

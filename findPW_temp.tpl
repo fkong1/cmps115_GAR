@@ -33,7 +33,7 @@
                   </div>
                   <div class = "psw_btn_2">
                      <form action="findPW_back_main">
-                        <a href="/"><button type="button" class="btn btn-info" style="width: 144px;">Cancle</button></a>
+                        <a href="/"><button type="button" class="btn btn-info" style="width: 144px;">Cancel</button></a>
                      </form>
                   </div>
                </div>

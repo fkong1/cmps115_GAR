@@ -66,13 +66,13 @@
               <td name = "html_request_id{{i-1}}" style="display: none;">{{ x[7] }}</td>
                 <% currentDT = datetime.datetime.now()%>
                 <% if currentDT.strftime("%m/%d/%Y %I:%M %p") > x[2]: %>
-                <td><button type ="button" class="btn btn-info main_btn_width2" id="expired" disabled>expired</button></td>
+                <td><button type ="button" class="btn btn-secondary main_btn_width " id="expired" disabled>expired</button></td>
               <% elif x[6]=="new": %>
-              <td><button type ="button" class="btn btn-info main_btn_width2">cancel</button></td>
+              <td><button type ="button" class="btn customer_request_bottom_width main_btn_width2">cancel</button></td>
               <% elif x[6]=="accepted": %>
-              <td><button type ="button" class="btn btn-info main_btn_width" disabled>accepted</button></td>
+              <td><button type ="button" class="btn customer_request_bottom_width " disabled>accepted</button></td>
                 <%elif x[6]=="cancel":%>
-                <td><button type ="button" class="btn btn-info main_btn_width2" disabled>canceled</button></td>
+                <td><button type ="button" class="btn customer_request_bottom_width " disabled>canceled</button></td>
               <% end %>
             </tr>
         <%end%>
