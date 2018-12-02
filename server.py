@@ -10,15 +10,11 @@ app = Flask(__name__)
 
 logged_user_id = ""
 logged_username = ""
-
-@get('/test')
-def test():
-    return template("test")
+view_details = ""
 
 @get('/test1')
 def test1():
     return template("test1")
-
 
 @get('/')
 def index():
@@ -32,8 +28,13 @@ def index():
 def register():
     return template("register_temp")
 
+@get('/view_detail')
+def view_detail():
+    print ("view_details:"+str(view_details))
+    return template("view_detail",logged_username=logged_username, view_details = view_details)
+
 @get('/find-password')
-def register():
+def find_password():
     return template("findPW_temp")
 
 @get('findPW_back_main')
@@ -49,7 +50,6 @@ def profile():
         logged_email = findEmail(logged_cruzid)
         logged_password = findPassword(logged_email)
 
-
         return template("profile_temp",logged_username=logged_username, logged_cruzid=logged_cruzid,
                         logged_email=logged_email,logged_password=logged_password)
 
@@ -63,7 +63,7 @@ def main():
         request_result = main_DB(logged_user_id)
         print ('main front page:' + str(logged_user_id))
 
-        return template("main_temp",logged_username=logged_username,request_result=request_result)
+        return template("main_temp",logged_username=logged_username,request_result=request_result,logged_user_id=logged_user_id)
 
 @get('/history')
 def history():
@@ -161,11 +161,14 @@ def register_connectDB(username, password,cruzid,studentid,emailaddress):
 def main_DB(logged_user_id):
     mydb = connectDB()
     mycursor = mydb.cursor()
-    sql = "select ride_type, start_time, end_time, starting_point,destination,userid,request_type,request_id, driverid from new_ride"
-    print("sql: "+str(sql))
+    # print ("main_db ===========" + str(logged_user_id))
+    sql = "select new_ride.ride_type, new_ride.start_time, new_ride.end_time, " \
+          "new_ride.starting_point,new_ride.destination,user.username,new_ride.request_type,new_ride.request_id, new_ride.driverid " \
+          "from new_ride, user where new_ride.userid = user.userid and new_ride.userid <> "+ str(logged_user_id)
+    # print("sql: "+ str(sql))
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
-    print("function main_DB: "+str(logged_user_id)+str(myresult))
+    # print("function main_DB: "+str(logged_user_id)+str(myresult))
     mydb.close()
     return myresult
 
@@ -343,6 +346,17 @@ def Request_canceled(comments):
     mydb.commit()
     mydb.close()
     return True
+
+def view_requst(view_id):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "select new_ride.ride_type, new_ride.start_time, new_ride.end_time, new_ride.repeat_request_id,user.username, new_ride.starting_point, new_ride.destination from new_ride, user where new_ride.userid = user.userid and request_id = " + str(view_id)
+    print ("view_requst_sql: "+ str(sql))
+    mycursor.execute(sql)
+    myresult = mycursor.fetchall()
+    mydb.close()
+    return myresult
+
 
 # sent the password to the user's email
 def sentmassage(email,password):
@@ -566,7 +580,14 @@ def feedback_req():
     if Request_canceled(comments) == True:
         return comments
 
-
+@post('/feedback_view', method='POST')
+def feedback_view():
+    view_id = request.json #request_id
+    print ("view_id: "+str(view_id))
+    global view_details
+    view_details = view_requst(view_id)
+    print ("view_details: " + str(view_details))
+    return view_id
 
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')
@@ -588,6 +609,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8001)
+run(reloader=True, host='localhost', port=8003)
 
 

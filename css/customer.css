@@ -243,13 +243,18 @@ button.bg-dark:focus {
 }
 
 .request_btn_width {
-	width: 148px;
+	width: 310px
+}
+
+.view_btn_width {
+	width: 100px;
 }
 
 .newrider_container_left {
 	float: left;
-	height: 100%;
-	width: 40%
+	height: auto;
+	width: 40%;
+	/*border:1px solid #ffff00;*/
 }
 
 .newrider_container_right {
@@ -261,6 +266,11 @@ button.bg-dark:focus {
 
 .newrider_row_container {
 	height: 9%;
+	/*border:1px solid orange;*/
+}
+.view_newrider_row_container{
+	height: 62px;
+	/*border:1px solid orange;*/
 }
 
 .newrider_checkbox_row_container {
@@ -278,6 +288,17 @@ button.bg-dark:focus {
 	padding-right: 10px;
 	padding-top: 10px;
 	font-size: 18px;
+	/*border:1px solid yellow;*/
+}
+.view_newrider_row_container_label{
+	float: left;
+	width: 32%;
+	height: 62px;
+	text-align: right;
+	padding-right: 10px;
+	padding-top: 10px;
+	font-size: 18px;
+	/*border:1px solid yellow;*/
 }
 
 .text_size_16{
@@ -291,6 +312,7 @@ button.bg-dark:focus {
 	width: 68%;
 	height: 100%;
 	padding-top: 3px;
+	/*border: 1px solid green;*/
 }
 
 .nerrider_checkbox_group_label {
@@ -320,6 +342,7 @@ button.bg-dark:focus {
 	height: 100%;
 	padding-right: 5px;
 	padding-top: 3px;
+	/*border: 1px solid red;*/
 }
 
 .newrider_btn_right {
@@ -328,6 +351,7 @@ button.bg-dark:focus {
 	padding-left: 8px;
 	padding-top: 3px;
 	float: left;
+	/*border: 1px solid blue;*/
 }
 
 .newrider_btn_width {
@@ -466,4 +490,55 @@ height:10px;
 	width:100px;
 	color: white;
 }
-
+.btn_width_100{
+	width:100px
+}
+.view_row_container_input {
+	float: right;
+	width: 68%;
+	font-size: 18px;
+	padding-top: 10px;
+	padding-right: 10px;
+	/*border: 1px solid mediumpurple;*/
+}
+.view_btn_triple{
+	float: left;
+	height: 100%;
+	padding-top: 3px;
+	/*border: 1px solid red;*/
+	width: 50%;
+	text-align: center;
+}
+#right-panel{
+	color:white;
+	font-weight: bold;
+	font-size: 18px;
+	/*border: 1px solid red;*/
+	text-align: center;
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-top: 50px;
+}
+.direction_row_container{
+	height: auto;
+}
+.adp-summary{
+	color:white;
+}
+.adp-substep{
+	color:white;
+}
+.adp-details, .adp-legal {
+	color: #343a40 !important;
+}
+.adp-text{
+	color:white;
+}
+.adp-placemark{
+	background-color: #343a40 !important;
+	border-color: #343a40 !important;
+}
+.adp-substep .adp-stepicon .adp-maneuver {
+    background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/maneuvers_hdpi.png);
+	filter: invert(100%);
+}

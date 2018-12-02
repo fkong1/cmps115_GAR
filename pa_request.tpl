@@ -116,11 +116,20 @@
             </div>
             <div class="newrider_row_container">
                <div class="newrider_row_container_label"></div>
-               <div class="newrider_btn_left">
+               <div class="newrider_row_container_input">
                   <button type ="submit" class="btn btn-info request_btn_width">Submit</button>
                </div>
-               <div class="newrider_btn_right">
+            </div>
+             <div class="newrider_row_container">
+                <div class="newrider_row_container_label"></div>
+             <div class="newrider_row_container_input">
                   <button type ="reset" class="btn btn-info request_btn_width">Reset</button>
+               </div>
+             </div>
+               <div class="newrider_row_container">
+               <div class="newrider_row_container_label"></div>
+               <div class="newrider_row_container_input">
+                  <a href="/history"><button type ="button" class="btn btn-info request_btn_width">Back</button></a>
                </div>
             </div>
          </form>

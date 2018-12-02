@@ -29,7 +29,7 @@
     </ul>
   </div>
 </nav>
-<div class ="login_text"><img src="images/icons8-request-service-64.png">Request History List</div>
+<div class ="login_text"><img src="images/icons8-request-service-64.png">Passenger Ride History </div>
 <div class="button_add_ride">
     <a href="pa_request"><button type ="submit" class="btn add_btn_width">Add New Ride</button></a>
 </div>
@@ -65,7 +65,7 @@
               <!--<td><button type ="button" class="btn btn-outline-info main_btn_width" >View</button></td>-->
               <td name = "html_request_id{{i-1}}" style="display: none;">{{ x[7] }}</td>
                 <% currentDT = datetime.datetime.now()%>
-                <% if currentDT.strftime("%Y/%m/%d %I:%M %p") > x[2]: %>
+                <% if currentDT.strftime("%Y/%m/%d %H:%M %p") > x[2]: %>
                 <td><button type ="button" class="btn btn-secondary main_btn_width " id="expired" disabled>expired</button></td>
               <% elif x[6]=="new": %>
               <td><button type ="button" class="btn customer_request_bottom_width main_btn_width2">cancel</button></td>
