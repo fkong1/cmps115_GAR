@@ -63,7 +63,7 @@
       <%for x in fruits:%>
             <tr>
               <!--<%if myresult[0][0] != x[5]: %>-->
-              <th scope="row">{{i}}</th>
+              <th scope="row" id="html_col_num">{{i}}</th>
               <%i+=1%>
               <!--ride Type-->
               <td id = "html_type_id{{i-1}}"name ="html_type{{i-1}}">{{ x[0] }}</td>

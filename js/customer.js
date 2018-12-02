@@ -30,7 +30,7 @@ $(document).ready(function () {
 		// alert($(this).parent("td").parent("tr").find("td").eq(4).text());
 		// alert($(this).parent("td").parent("tr").find("td").eq(5).text());
 		// alert($(this).parent("td").parent("tr").find("td").eq(6).text());
-		// alert($(this).parent("td").parent("tr").find("td").eq(7).text());
+		 //alert($(this).parent("td").parent("tr").find("td").eq(7).text());
 		// alert(this.id);
 		var request_id_send = $(this).parent("td").parent("tr").find("td").eq(6).text();
 		$.ajax({
@@ -81,6 +81,28 @@ $(document).ready(function () {
 
 		});
 		window.location.href = "view_detail";
-
 	});
+		$('.view_accept').click(function (event) {
+		var request_id_send =document.getElementById('request_id').innerText;
+		$.ajax({
+			url: "/feedback_view_accept",
+			type: "POST",
+			data: JSON.stringify(request_id_send),
+			contentType: "application/json"
+
+		});
+		window.location.href = "main";
+    });
+		$('.view_cancel').click(function (event) {
+		var request_id_send =document.getElementById('request_id').innerText;
+		$.ajax({
+			url: "/feedback_view_cancel",
+			type: "POST",
+			data: JSON.stringify(request_id_send),
+			contentType: "application/json"
+
+		});
+		window.location.href = "main";
+    });
+
 });
