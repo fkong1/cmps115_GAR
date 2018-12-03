@@ -12,6 +12,7 @@ logged_user_id = ""
 logged_username = ""
 view_details = ""
 
+
 @get('/test1')
 def test1():
     return template("test1")
@@ -350,7 +351,7 @@ def Request_canceled(comments):
 def view_requst(view_id):
     mydb = connectDB()
     mycursor = mydb.cursor()
-    sql = "select new_ride.ride_type, new_ride.start_time, new_ride.end_time, new_ride.repeat_request_id,user.username, new_ride.starting_point, new_ride.destination from new_ride, user where new_ride.userid = user.userid and request_id = " + str(view_id)
+    sql = "select new_ride.ride_type, new_ride.start_time, new_ride.end_time, new_ride.repeat_request_id,user.username, new_ride.starting_point, new_ride.destination,new_ride.request_type, new_ride.request_id  from new_ride, user where new_ride.userid = user.userid and request_id = " + str(view_id)
     print ("view_requst_sql: "+ str(sql))
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
@@ -589,6 +590,19 @@ def feedback_view():
     view_details = view_requst(view_id)
     print ("view_details: " + str(view_details))
     return view_id
+
+@route('/feedback_view_accept', method='POST')
+def view_accept():
+    comments = request.json #request_id
+    if accepted_request(comments) == True:
+        return comments
+
+@route('/feedback_view_cancel', method='POST')
+def view_accept():
+    comments = request.json #request_id
+    if accepted_canceled(comments) == True:
+        return comments
+
 
 # Let's add some code to serve jpg images from our static images directory.
 @route('/images/<filename:re:.*\.*>')

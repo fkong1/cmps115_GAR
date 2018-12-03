@@ -13,6 +13,6 @@
             <img src="/images/icons8-cancel-64.png">
         </div>
         <div class="successful_title">Error</div>
-        <div class="successful_text">The username or email has been used!</div>
+        <div class="successful_text">The cruzid or email has been used!</div>
     </div>
 </body>

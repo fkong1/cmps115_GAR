@@ -34,8 +34,9 @@
          </div>
       </div>
    </nav>
-   <div class ="login_text text-white"><img src="/images/icons8-taxi-booking-office-64.png"> New Ride</div>
+   <div class ="login_text text-white"><img src="/images/icons8-taxi-booking-office-64.png"> View Detail</div>
    <%for x in view_details: %>
+   <div id="request_id" class="request_id">{{x[8]}}</div>
    <div class="newrider_container">
       <div class="newrider_container_left">
          <form action="/new_request" method="post">
@@ -101,18 +102,27 @@
                <div class="view_row_container_input text-white" id="destination_id">
                   {{ x[6] }}
                </div>
+
             </div>
             <div class="direction_row_container text-white" >
                 <div id="right-panel">
                   <p>Total Distance: <span id="total"></span></p>
                 </div>
             </div>
-            <div class="newrider_row_container">
+            <div class="newrider_row_container" id="request_type">
                <div class="view_btn_triple" style="text-align: right !important; padding-right: 10px;">
-                  <button type ="button" class="btn btn-info view_btn_width">accept</button>
+                  <%if x[7] == "new":%>
+                  <button type ="button" class="btn btn-info view_btn_width view_accept">accept</button>
+                  <%elif x[7] == "accepted":%>
+                  <button type ="button" class="btn btn-warning view_btn_width view_cancel" style="color:white;">cancel</button>
+                  <%end%>
                </div>
                <div class="view_btn_triple" style="text-align: left !important; padding-left: 10px;">
+                  <%if x[7] == "new":%>
                   <a href="/main"><button type ="button" class="btn btn-info view_btn_width" >Back</button></a>
+                  <%elif x[7] == "accepted":%>
+                  <a href="/main"><button type ="button" class="btn btn-warning view_btn_width" style="color:white;">Back</button></a>
+                  <%end%>
                </div>
             </div>
          </form>
