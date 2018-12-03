@@ -471,7 +471,7 @@ def new_request():
     ck_4 = request.forms.get('ck_4')
     ck_5 = request.forms.get('ck_5')
 
-    if input_start_time != "" or input_end_time != "" or input_staring_point != "" or input_staring_point != "" or input_destination != "":
+    if input_start_time != "" and input_end_time != "" and input_staring_point != "" and input_staring_point != "" and input_destination != "":
         if ride_status == "Long Period":
             if ck_1 == 'on':
                 ck_1 = 1
@@ -595,6 +595,7 @@ def feedback_view():
 def view_accept():
     comments = request.json #request_id
     if accepted_request(comments) == True:
+        senddriver(comments)
         return comments
 
 @route('/feedback_view_cancel', method='POST')
@@ -624,6 +625,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8003)
+run(reloader=True, host='localhost', port=8004)
 
 
