@@ -123,7 +123,7 @@
              <div class="newrider_row_container">
                 <div class="newrider_row_container_label"></div>
              <div class="newrider_row_container_input">
-                  <button type ="reset" class="btn btn-info request_btn_width">Reset</button>
+                  <button type ="reset" class="btn btn-info request_btn_width" id="request_btn">Reset</button>
                </div>
              </div>
                <div class="newrider_row_container">

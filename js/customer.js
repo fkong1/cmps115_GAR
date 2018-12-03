@@ -8,6 +8,9 @@ $(function () {
 		$('#profile_6').show("slow");
 		$('#profile_email2').show("slow");
 	});
+	$("#request_btn").click(function(){
+		$('#riderType').hide("slow");
+	})
 
 	$('#datetimepicker1').datetimepicker();
 	$('#datetimepicker2').datetimepicker();
