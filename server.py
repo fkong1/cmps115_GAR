@@ -594,6 +594,7 @@ def feedback_view():
 def view_accept():
     comments = request.json #request_id
     if accepted_request(comments) == True:
+        senddriver(comments)
         return comments
 
 @route('/feedback_view_cancel', method='POST')
@@ -623,6 +624,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8003)
+run(reloader=True, host='localhost', port=8004)
 
 
