@@ -31,8 +31,11 @@ def register():
 
 @get('/view_detail')
 def view_detail():
-    print ("view_details:"+str(view_details))
-    return template("view_detail",logged_username=logged_username, view_details = view_details)
+    if logged_username == "":
+        return template('must_login')
+    else:
+        print ("view_details:"+str(view_details))
+        return template("view_detail",logged_username=logged_username, view_details = view_details)
 
 @get('/find-password')
 def find_password():
