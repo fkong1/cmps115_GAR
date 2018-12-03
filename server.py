@@ -470,7 +470,7 @@ def new_request():
     ck_4 = request.forms.get('ck_4')
     ck_5 = request.forms.get('ck_5')
 
-    if input_start_time != "" or input_end_time != "" or input_staring_point != "" or input_staring_point != "" or input_destination != "":
+    if input_start_time != "" and input_end_time != "" and input_staring_point != "" and input_staring_point != "" and input_destination != "":
         if ride_status == "Long Period":
             if ck_1 == 'on':
                 ck_1 = 1
