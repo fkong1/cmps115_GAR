@@ -417,8 +417,7 @@ def login():
         "select COUNT(*) from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
     result = mycursor.fetchall()
     the_num = result[0]
-    print (str(the_num[0]))
-    if the_num[0] == 0:
+    if the_num==0:
         return template("login_wrong")
     mycursor = mydb.cursor()
     mycursor.execute(
@@ -628,6 +627,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8004)
+run(reloader=True, host='localhost', port=8080)
 
 
