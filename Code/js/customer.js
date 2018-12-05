@@ -17,14 +17,18 @@ $(function () {
 	$('#rider_type_id').change(function () {
 		var a = $("#rider_type_id option:selected").val();
 		if (a == "Single Ride") {
-			$('#riderType').hide("slow");
+			$('#riderType').hide();
+
 		} else {
-			$('#riderType').show("slow");
+			$('#riderType').show();
 		}
+		var newrider_container_left = $('#newrider_container_left').height();
+		document.getElementById("newrider_container_right").style.height = newrider_container_left - 20 +'px';
 	});
 });
 
 $(document).ready(function () {
+
 	$('.main_btn_width1').click(function (event) {
 		// alert($(this).parent("td").parent("tr").find("td").eq(0).text());
 		// alert($(this).parent("td").parent("tr").find("td").eq(1).text());
