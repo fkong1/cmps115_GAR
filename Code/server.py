@@ -1,7 +1,11 @@
-import mysql.connector, smtplib, json
+import mysql.connector, smtplib, json,string
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from bottle import get, route, run, template, static_file, request, post
+from random import choice
+from string import digits,ascii_letters,join
+
+
 __author__ = 'kai'
 
 from flask import Flask
@@ -398,6 +402,22 @@ def senddriver(id):
     server.sendmail(sender, drivemail, message.as_string())
 
     server.quit()
+
+def getNewPassword():
+    new_password_list = ascii_letters + digits + "~!@#$%^&*"
+
+
+    return str(join(choice(new_password_list) for i in range(15))).replace(" ", "")
+
+def updatePassword(email, newPassword):
+    mydb = connectDB()
+    mycursor = mydb.cursor()
+    sql = "UPDATE user SET password = '"+ newPassword + "' WHERE emailaddress = '" + email + "'"
+    mycursor.execute(sql)
+    mydb.commit()
+    mydb.close()
+
+
 ############################################ connect UI page to MySQL database ############################################
 
 @post('/login')
@@ -528,19 +548,20 @@ def password_succeed():
     find_choice = request.forms.get('choice')           # get the user choice(cruzid, email) from user entered
     user_cruzid = request.forms.get('cruzid')           # get the cruzid from user entered
     user_email = request.forms.get('emailaddress')      # get the emailaddress from user entered
+    new_passwprd = getNewPassword()
 
     # if user enter correct cruzid or email, go to the succeed  page, the password will send to the user email
     if find_choice == "cruzid":
         print("choose cruzid")
         if findPW_connectDB(find_choice, user_cruzid) == True:
             email = findEmail(user_cruzid)          # if the entered cruzid is correct, get the email under the cruzid
-            user_pasword =  findPassword(email)
-            sentmassage(email, user_pasword)
+            updatePassword(email, new_passwprd)
+            sentmassage(email, new_passwprd)
             return template("findPW_succeed")
     else:
         if findPW_connectDB(find_choice, user_email) == True:
-            user_pasword = findPassword(user_email)
-            sentmassage(user_email, user_pasword)
+            updatePassword(user_email, new_passwprd)
+            sentmassage(user_email, new_passwprd)
             return template("findPW_succeed")
     return template("findPW_wrong")     # if user enter wrong cruzid or email, go to the wrong warning page
 
