@@ -12,11 +12,6 @@ logged_user_id = ""
 logged_username = ""
 view_details = ""
 
-
-@get('/test1')
-def test1():
-    return template("test1")
-
 @get('/')
 def index():
     global logged_user_id
@@ -187,11 +182,11 @@ def history_DB(logged_user_id):
     mydb.close()
     return myresult
 
-def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5):
+def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5,ck_6,ck_7):
     mydb = connectDB()
     mycursor = mydb.cursor()
-    sql = "INSERT INTO repeat_request (monday, tuesday,wednesday,thursday,friday) values(%s, %s, %s, %s, %s)"
-    val = (ck_1,ck_2,ck_3,ck_4,ck_5)
+    sql = "INSERT INTO repeat_request (monday, tuesday,wednesday,thursday,friday,saturday,sunday) values(%s, %s, %s, %s, %s,%s,%s)"
+    val = (ck_1,ck_2,ck_3,ck_4,ck_5,ck_6,ck_7)
     print("sql"+str(sql))
     print("sql" + str(val))
     mycursor.execute(sql, val)
@@ -472,6 +467,8 @@ def new_request():
     ck_3 = request.forms.get('ck_3')
     ck_4 = request.forms.get('ck_4')
     ck_5 = request.forms.get('ck_5')
+    ck_6 = request.forms.get('ck_6')
+    ck_7 = request.forms.get('ck_7')
 
     if input_start_time != "" and input_end_time != "" and input_staring_point != "" and input_staring_point != "" and input_destination != "":
         if ride_status == "Long Period":
@@ -499,10 +496,21 @@ def new_request():
                 ck_5 = 1
             else:
                 ck_5 = 0
-            if (ck_1 == 0 and ck_2 == 0 and ck_3 == 0 and ck_4 == 0 and ck_5 == 0):
+
+            if ck_6 == 'on':
+                ck_6 = 1
+            else:
+                ck_6 = 0
+
+            if ck_7 == 'on':
+                ck_7 = 1
+            else:
+                ck_7 = 0
+
+            if (ck_1 == 0 and ck_2 == 0 and ck_3 == 0 and ck_4 == 0 and ck_5 == 0 and ck_6 == 0 and ck_7 == 0):
                 return template("pa_request_error")
             else:
-                repeat_request_id = repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5)
+                repeat_request_id = repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5,ck_6,ck_7)
         else:
             print("do nothing")
 

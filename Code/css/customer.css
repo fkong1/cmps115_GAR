@@ -262,6 +262,7 @@ button.bg-dark:focus {
 	height: 100%;
 	width: 60%;
 	padding-right: 50px;
+	/*border:1px solid #ff00ff;*/
 }
 
 .newrider_row_container {
@@ -274,10 +275,11 @@ button.bg-dark:focus {
 }
 
 .newrider_checkbox_row_container {
-	height: 20%;
+	height: 14.28%;
 	float: right;
 	width: 100%;
 	padding-top: 9px;
+	/*border: 1px solid #269abc;*/
 }
 
 .newrider_row_container_label {
@@ -322,6 +324,7 @@ button.bg-dark:focus {
 	padding-top: 100px;
 	padding-right: 10px;
 	font-size: 18px;
+	/*border: 1px solid red;*/
 }
 
 .nerrider_checkbox_group {
@@ -332,7 +335,7 @@ button.bg-dark:focus {
 }
 
 .newrider_checkbox_area {
-	height: 46%;
+	height: 63%;
 	display: none;
 }
 

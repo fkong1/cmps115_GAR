@@ -135,7 +135,7 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
-          center: {lat: 36.9916, lng: -122.0583}  // Australia.
+          center: {lat: 36.9916, lng: -122.0583}  // UCSC.
         });
         var originInput = document.getElementById('starting_point_id').innerText;
         var destinationInput = document.getElementById('destination_id').innerText;

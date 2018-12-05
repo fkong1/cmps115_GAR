@@ -97,6 +97,15 @@
                         <input type="checkbox" class="custom-control-input1" id="ck_5" name="ck_5">
                         <label class="custom-control-label1 text-white" for="ck_5">Friday</label>
                      </div>
+                     <div class="newrider_checkbox_row_container">
+                        <input type="checkbox" class="custom-control-input1" id="ck_6" name="ck_6">
+                        <label class="custom-control-label1 text-white" for="ck_5">Saturday</label>
+                     </div>
+
+                     <div class="newrider_checkbox_row_container">
+                        <input type="checkbox" class="custom-control-input1" id="ck_7" name="ck_7">
+                        <label class="custom-control-label1 text-white" for="ck_5">Sunday</label>
+                     </div>
                   </div>
                </div>
             </div>
