@@ -1,3 +1,8 @@
+window.onload=function(){
+    var newrider_container_left = $('#newrider_container_left').height();
+    document.getElementById("newrider_container_right").style.height = newrider_container_left - 20 +'px';
+}
+
 $(function () {
 	$("#profile_password1").click(function () {
 		$('#profile_4').show("slow");
@@ -9,7 +14,9 @@ $(function () {
 		$('#profile_email2').show("slow");
 	});
 	$("#request_btn").click(function(){
-		$('#riderType').hide("slow");
+		$('#riderType').hide();
+        var newrider_container_left = $('#newrider_container_left').height();
+        document.getElementById("newrider_container_right").style.height = newrider_container_left - 20 +'px';
 	})
 
 	$('#datetimepicker1').datetimepicker();
