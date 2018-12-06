@@ -50,7 +50,7 @@
    <%for x in view_details: %>
    <div id="request_id" class="request_id">{{x[8]}}</div>
    <div class="newrider_container">
-      <div class="newrider_container_left">
+      <div class="newrider_container_left" id = "newrider_container_left">
          <form action="/new_request" method="post">
             <div class="newrider_row_container">
                <div class="newrider_row_container_label text-white">Passenger: </div>
@@ -139,7 +139,7 @@
             </div>
          </form>
       </div>
-      <div class="newrider_container_right text-white">
+      <div class="newrider_container_right text-white" id = "newrider_container_right">
          <div id="map"></div>
       </div>
    </div>
