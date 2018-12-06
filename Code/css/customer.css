@@ -134,7 +134,6 @@ a.alert-link:visited {
 	margin-top: 10%;
 	width: 300px;
 	background-color: #6c757d;
-	;
 }
 
 .successful_sign {
@@ -544,4 +543,12 @@ height:10px;
 .adp-substep .adp-stepicon .adp-maneuver {
     background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/maneuvers_hdpi.png);
 	filter: invert(100%);
+}
+.navbar-inverse {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: #343a40;
 }

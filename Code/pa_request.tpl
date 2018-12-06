@@ -14,26 +14,36 @@
    <meta charset="utf-8">
 </head>
 <body class="p-3 mb-2 bg-dark">
-   <nav class="navbar navbar-default" role="navigation" style="background-color:#343a40 !important; border-color: #343a40;">
-      <div class="container-fluid">
-         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-               <img src="images/icons8-customer-64.png" style="width: 32px; height: 32px;margin-top: 8px;">
-               <li class="dropdown" style="float:right;">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                     {{logged_username}}
-                     <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu" role="menu">
-                     <li><a href="/profile">Profile</a></li>
-                     <li class="divider"></li>
-                     <li><a href="/">Log off</a></li>
-                  </ul>
-               </li>
-            </ul>
-         </div>
-      </div>
-   </nav>
+   <nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="images/icons8-customer-64.png" style="width: 28px; height: 28px;">{{logged_username}}<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/profile">Profile</a>
+            <li class="divider"></li>
+            <li><a href="/">Log off</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
    <div class ="login_text text-white"><img src="/images/icons8-taxi-booking-office-64.png"> New Ride</div>
    <div class="newrider_container">
       <div class="newrider_container_left" id = "newrider_container_left">
