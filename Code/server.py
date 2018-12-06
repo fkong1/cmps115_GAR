@@ -417,7 +417,7 @@ def login():
         "select COUNT(*) from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
     result = mycursor.fetchall()
     the_num = result[0]
-    if the_num==0:
+    if the_num==[0]:
         return template("login_wrong")
     mycursor = mydb.cursor()
     mycursor.execute(
