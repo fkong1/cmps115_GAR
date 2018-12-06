@@ -4,14 +4,14 @@ window.onload=function(){
 }
 
 $(function () {
-	$("#profile_password1").click(function () {
-		$('#profile_4').show("slow");
-		$('#profile_assword2').show("slow");
+	$("#password1").click(function () {
+		// $('#profile_assword1').show("slow");
+		$('#password2').show("slow");
 	});
 
-	$("#profile_email1").click(function () {
-		$('#profile_6').show("slow");
-		$('#profile_email2').show("slow");
+	$("#emailaddress1").click(function () {
+		// $('#profile_email1').show("slow");
+		$('#emailaddress2').show("slow");
 	});
 	$("#request_btn").click(function(){
 		$('#riderType').hide();

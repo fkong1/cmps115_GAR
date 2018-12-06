@@ -56,14 +56,20 @@ a.alert-link:visited {
 .prepend30 {
 	float: left;
 	width: 30%;
+    border: 1px solid red;
 }
 
 .append70 {
 	float: right;
 	width: 70%;
+    border: 1px solid blue;
 }
 
-
+.form-group1 {
+    margin-bottom: 10px;
+    border: 1px solid green;
+    height:30px;
+}
 
 .main_link_1 {
 	float: left;
