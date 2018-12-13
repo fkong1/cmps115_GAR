@@ -1,15 +1,22 @@
+window.onload=function(){
+    var newrider_container_left = $('#newrider_container_left').height();
+    document.getElementById("newrider_container_right").style.height = newrider_container_left - 20 +'px';
+}
+
 $(function () {
-	$("#profile_password1").click(function () {
-		$('#profile_4').show("slow");
-		$('#profile_assword2').show("slow");
+	$("#password1").click(function () {
+		// $('#profile_assword1').show("slow");
+		$('#password2').show("slow");
 	});
 
-	$("#profile_email1").click(function () {
-		$('#profile_6').show("slow");
-		$('#profile_email2').show("slow");
+	$("#emailaddress1").click(function () {
+		// $('#profile_email1').show("slow");
+		$('#emailaddress2').show("slow");
 	});
 	$("#request_btn").click(function(){
-		$('#riderType').hide("slow");
+		$('#riderType').hide();
+        var newrider_container_left = $('#newrider_container_left').height();
+        document.getElementById("newrider_container_right").style.height = newrider_container_left - 20 +'px';
 	})
 
 	$('#datetimepicker1').datetimepicker();
@@ -17,14 +24,18 @@ $(function () {
 	$('#rider_type_id').change(function () {
 		var a = $("#rider_type_id option:selected").val();
 		if (a == "Single Ride") {
-			$('#riderType').hide("slow");
+			$('#riderType').hide();
+
 		} else {
-			$('#riderType').show("slow");
+			$('#riderType').show();
 		}
+		var newrider_container_left = $('#newrider_container_left').height();
+		document.getElementById("newrider_container_right").style.height = newrider_container_left - 20 +'px';
 	});
 });
 
 $(document).ready(function () {
+
 	$('.main_btn_width1').click(function (event) {
 		// alert($(this).parent("td").parent("tr").find("td").eq(0).text());
 		// alert($(this).parent("td").parent("tr").find("td").eq(1).text());

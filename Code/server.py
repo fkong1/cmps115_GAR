@@ -656,6 +656,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8080)
+run(reloader=True, host='localhost', port=8888)
 
 

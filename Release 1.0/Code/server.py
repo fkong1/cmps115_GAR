@@ -1,9 +1,11 @@
-import mysql.connector, smtplib, json
+import mysql.connector, smtplib, json,string
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from bottle import get, route, run, template, static_file, request, post
-from string import join, ascii_letters, digits
 from random import choice
+from string import digits,ascii_letters,join
+
+
 __author__ = 'kai'
 
 from flask import Flask
@@ -13,11 +15,6 @@ app = Flask(__name__)
 logged_user_id = ""
 logged_username = ""
 view_details = ""
-
-
-@get('/test1')
-def test1():
-    return template("test1")
 
 @get('/')
 def index():
@@ -189,11 +186,11 @@ def history_DB(logged_user_id):
     mydb.close()
     return myresult
 
-def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5):
+def repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5,ck_6,ck_7):
     mydb = connectDB()
     mycursor = mydb.cursor()
-    sql = "INSERT INTO repeat_request (monday, tuesday,wednesday,thursday,friday) values(%s, %s, %s, %s, %s)"
-    val = (ck_1,ck_2,ck_3,ck_4,ck_5)
+    sql = "INSERT INTO repeat_request (monday, tuesday,wednesday,thursday,friday,saturday,sunday) values(%s, %s, %s, %s, %s,%s,%s)"
+    val = (ck_1,ck_2,ck_3,ck_4,ck_5,ck_6,ck_7)
     print("sql"+str(sql))
     print("sql" + str(val))
     mycursor.execute(sql, val)
@@ -420,6 +417,7 @@ def updatePassword(email, newPassword):
     mydb.commit()
     mydb.close()
 
+
 ############################################ connect UI page to MySQL database ############################################
 
 @post('/login')
@@ -434,8 +432,7 @@ def login():
         "select COUNT(*) from user where cruzid = '" + login_cruzid + "'")  # select all cruzid and email from the database
     result = mycursor.fetchall()
     the_num = result[0]
-    print (str(the_num[0]))
-    if the_num[0] == 0:
+    if the_num==0:
         return template("login_wrong")
     mycursor = mydb.cursor()
     mycursor.execute(
@@ -490,6 +487,8 @@ def new_request():
     ck_3 = request.forms.get('ck_3')
     ck_4 = request.forms.get('ck_4')
     ck_5 = request.forms.get('ck_5')
+    ck_6 = request.forms.get('ck_6')
+    ck_7 = request.forms.get('ck_7')
 
     if input_start_time != "" and input_end_time != "" and input_staring_point != "" and input_staring_point != "" and input_destination != "":
         if ride_status == "Long Period":
@@ -517,10 +516,21 @@ def new_request():
                 ck_5 = 1
             else:
                 ck_5 = 0
-            if (ck_1 == 0 and ck_2 == 0 and ck_3 == 0 and ck_4 == 0 and ck_5 == 0):
+
+            if ck_6 == 'on':
+                ck_6 = 1
+            else:
+                ck_6 = 0
+
+            if ck_7 == 'on':
+                ck_7 = 1
+            else:
+                ck_7 = 0
+
+            if (ck_1 == 0 and ck_2 == 0 and ck_3 == 0 and ck_4 == 0 and ck_5 == 0 and ck_6 == 0 and ck_7 == 0):
                 return template("pa_request_error")
             else:
-                repeat_request_id = repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5)
+                repeat_request_id = repeat_DB(ck_1,ck_2,ck_3,ck_4,ck_5,ck_6,ck_7)
         else:
             print("do nothing")
 
@@ -538,21 +548,20 @@ def password_succeed():
     find_choice = request.forms.get('choice')           # get the user choice(cruzid, email) from user entered
     user_cruzid = request.forms.get('cruzid')           # get the cruzid from user entered
     user_email = request.forms.get('emailaddress')      # get the emailaddress from user entered
-    new_password = getNewPassword()
-
+    new_passwprd = getNewPassword()
 
     # if user enter correct cruzid or email, go to the succeed  page, the password will send to the user email
     if find_choice == "cruzid":
         print("choose cruzid")
         if findPW_connectDB(find_choice, user_cruzid) == True:
             email = findEmail(user_cruzid)          # if the entered cruzid is correct, get the email under the cruzid
-            updatePassword(email, new_password)
-            sentmassage(email, new_password)
+            updatePassword(email, new_passwprd)
+            sentmassage(email, new_passwprd)
             return template("findPW_succeed")
     else:
         if findPW_connectDB(find_choice, user_email) == True:
-            updatePassword(user_email, new_password)
-            sentmassage(user_email, new_password)
+            updatePassword(user_email, new_passwprd)
+            sentmassage(user_email, new_passwprd)
             return template("findPW_succeed")
     return template("findPW_wrong")     # if user enter wrong cruzid or email, go to the wrong warning page
 
@@ -647,6 +656,6 @@ def serve_js(filename):
 def serve_js(filename):
     return static_file(filename, root='fonts', mimetype='fonts/woff ttf')
 
-run(reloader=True, host='localhost', port=8080)
+run(reloader=True, host='localhost', port=8888)
 
 

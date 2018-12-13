@@ -56,14 +56,20 @@ a.alert-link:visited {
 .prepend30 {
 	float: left;
 	width: 30%;
+    border: 1px solid red;
 }
 
 .append70 {
 	float: right;
 	width: 70%;
+    border: 1px solid blue;
 }
 
-
+.form-group1 {
+    margin-bottom: 10px;
+    border: 1px solid green;
+    height:30px;
+}
 
 .main_link_1 {
 	float: left;
@@ -134,7 +140,6 @@ a.alert-link:visited {
 	margin-top: 10%;
 	width: 300px;
 	background-color: #6c757d;
-	;
 }
 
 .successful_sign {
@@ -262,6 +267,7 @@ button.bg-dark:focus {
 	height: 100%;
 	width: 60%;
 	padding-right: 50px;
+	/*border:1px solid #ff00ff;*/
 }
 
 .newrider_row_container {
@@ -274,10 +280,11 @@ button.bg-dark:focus {
 }
 
 .newrider_checkbox_row_container {
-	height: 20%;
+	height: 14.28%;
 	float: right;
 	width: 100%;
 	padding-top: 9px;
+	/*border: 1px solid #269abc;*/
 }
 
 .newrider_row_container_label {
@@ -322,6 +329,7 @@ button.bg-dark:focus {
 	padding-top: 100px;
 	padding-right: 10px;
 	font-size: 18px;
+	/*border: 1px solid red;*/
 }
 
 .nerrider_checkbox_group {
@@ -332,7 +340,7 @@ button.bg-dark:focus {
 }
 
 .newrider_checkbox_area {
-	height: 46%;
+	height: 63%;
 	display: none;
 }
 
@@ -541,4 +549,12 @@ height:10px;
 .adp-substep .adp-stepicon .adp-maneuver {
     background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/maneuvers_hdpi.png);
 	filter: invert(100%);
+}
+.navbar-inverse {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: #343a40;
 }

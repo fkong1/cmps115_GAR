@@ -22,13 +22,13 @@
                         <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="cruzid" class="form-control" id="formGroupExampleInput" placeholder="Cruz ID">
+                        <input type="text" name="cruzid" class="form-control" id="cruzid" placeholder="Cruz ID">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="studentid" class="form-control" id="formGroupExampleInput" placeholder="Studen ID">
+                        <input type="text" name="studentid" class="form-control" id="studentid" placeholder="Studen ID">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="emailaddress" class="form-control" id="formGroupExampleInput" placeholder="Email Address">
+                        <input type="text" name="emailaddress" class="form-control" id="emailaddress" placeholder="Email Address">
                     </div>
                 </div>
                 <div class="button_register">

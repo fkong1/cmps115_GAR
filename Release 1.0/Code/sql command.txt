@@ -41,3 +41,7 @@ INSERT INTO `gar_database`.`user` (`userid`, `username`,`password`, `cruzid`, `s
 DROP TABLE user ;
 DROP TABLE new_ride;
 DROP TABLE repeat_request;
+
+5.增加新列
+ALTER TABLE repeat_request ADD saturday VARCHAR(45) NULL
+ALTER TABLE repeat_request ADD sunday VARCHAR(45) NULL

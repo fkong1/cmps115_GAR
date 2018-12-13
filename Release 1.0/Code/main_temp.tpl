@@ -10,20 +10,21 @@
 </head>
 <body class="p-3 mb-2 bg-dark text-white">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="collapse navbar-collapse text_to_right" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <img src="images/icons8-customer-64.png" style="width: 32px; height: 32px; float: right; margin-top: 3px">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: right;">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           {{logged_username}}
+          <img src="images/icons8-customer-64.png" style="width: 28px; height: 28px; float: left; ">{{logged_username}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/profile">Profile</a>
+         <a class="dropdown-item" href="/profile">Profile</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/">Log off</a>
+         <a class="dropdown-item" href="/">Log off</a>
         </div>
       </li>
-
     </ul>
   </div>
 </nav>
